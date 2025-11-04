@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Test</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .question-container:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .result-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            display: none;
+        }
+
+        .result-container.show {
+            display: block;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .score-text {
+            font-size: 1.1rem;
+            color: #495057;
+        }
+
+        .restart-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .restart-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .question-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Multiple Choice Test</h1>
+            <p class="description">Select the correct answer for each question. You'll get immediate feedback.</p>
+            <div style="margin-top: 15px;">
+                <label for="exam-select">Select Exam: </label>
+                <select id="exam-select">
+                    <option value="examQuestions.json">Robotics Sensors Exam</option>
+                </select>
+                <button id="load-exam-btn" style="margin-left: 10px;">Load Exam</button>
+            </div>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div id="test-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="result-container" id="result-container">
+            <div class="score" id="score">Score: 0/0</div>
+            <p class="score-text" id="score-text">Complete the test to see your score!</p>
+            <button class="restart-btn" id="restart-btn">Restart Test</button>
+        </div>
+    </div>
+
+    <script>
+        // DOM elements
+        const testContainer = document.getElementById('test-container');
+        const resultContainer = document.getElementById('result-container');
+        const scoreElement = document.getElementById('score');
+        const scoreTextElement = document.getElementById('score-text');
+        const restartBtn = document.getElementById('restart-btn');
+        const progressBar = document.getElementById('progress');
+        const examSelect = document.getElementById('exam-select');
+        const loadExamBtn = document.getElementById('load-exam-btn');
+
+        // Global variables to store original and randomized questions
+        let questions = []; // Original questions from JSON
+        let randomizedQuestions = []; // Randomized questions for display
+        let userAnswers = [];
+        let score = 0;
+
+        // Function to shuffle choices and update the correct answer index accordingly
+        function randomizeQuestion(question) {
+            // Create an array of objects that includes both the choice text and the original index
+            const choicesWithIndices = question.choices.map((choice, index) => ({
+                text: choice,
+                originalIndex: index
+            }));
+
+            // Fisher-Yates shuffle algorithm
+            for (let i = choicesWithIndices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [choicesWithIndices[i], choicesWithIndices[j]] = [choicesWithIndices[j], choicesWithIndices[i]];
+            }
+
+            // Extract the shuffled choices and create a mapping from new index to original index
+            const shuffledChoices = choicesWithIndices.map(item => item.text);
+            const newToOriginalIndexMap = choicesWithIndices.map(item => item.originalIndex);
+            
+            // Find the new index of the correct answer based on the shuffle
+            const newCorrectIndex = newToOriginalIndexMap.indexOf(question.correct);
+            
+            // Return the question with shuffled choices and updated correct answer index
+            return {
+                question: question.question,
+                choices: shuffledChoices,
+                correct: newCorrectIndex,
+                originalCorrectIndex: question.correct // Keep original for reference if needed
+            };
+        }
+
+        // Available exam files - will be loaded dynamically from the server
+        let availableExams = [];
+        
+        // Fetch available exam files from the server
+        async function loadAvailableExams() {
+            try {
+                const response = await fetch('/api/exams');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const examsData = await response.json();
+                
+                // Convert the API response to the format expected by the UI
+                availableExams = examsData.map(exam => {
+                    return {
+                        value: `json/${exam.name}`, // Add path prefix for loading
+                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // Format filename as label
+                    };
+                });
+                
+                // Add the root directory examQuestions.json if it exists
+                try {
+                    const rootExamResponse = await fetch('examQuestions.json');
+                    if (rootExamResponse.ok) {
+                        availableExams.unshift({ value: 'examQuestions.json', label: 'Robotics Sensors Exam' });
+                    }
+                } catch (error) {
+                    console.log('No root examQuestions.json found, continuing with json directory exams only');
+                }
+                
+                populateExamDropdown();
+            } catch (error) {
+                console.error('Error loading available exams:', error);
+                // Fallback to a default exam if API fails
+                availableExams = [{ value: 'examQuestions.json', label: 'Robotics Sensors Exam' }];
+                populateExamDropdown();
+            }
+        }
+
+        // Populate the exam selection dropdown
+        function populateExamDropdown() {
+            examSelect.innerHTML = '';
+            availableExams.forEach(exam => {
+                const option = document.createElement('option');
+                option.value = exam.value;
+                option.textContent = exam.label;
+                examSelect.appendChild(option);
+            });
+        }
+
+        // Fetch questions from the server based on selected exam
+        async function loadQuestions(examFile) {
+            try {
+                const response = await fetch(examFile);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                questions = await response.json();
+                userAnswers = Array(questions.length).fill(null);
+                initializeTest();
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                testContainer.innerHTML = '<p style="color: red;">Failed to load questions. Please try again later.</p>';
+            }
+        }
+
+        // Initialize the test
+        function initializeTest() {
+            testContainer.innerHTML = '';
+            // Randomize questions array as well for extra variety (optional)
+            randomizedQuestions = questions.map(question => randomizeQuestion(question));
+            userAnswers = Array(randomizedQuestions.length).fill(null);
+            score = 0;
+            resultContainer.classList.remove('show');
+
+            // Create question elements with randomized choices
+            randomizedQuestions.forEach((questionData, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question-container';
+                questionElement.innerHTML = `
+                    <div class="question-text">${index + 1}. ${questionData.question}</div>
+                    <div class="options-container" id="options-${index}">
+                        ${questionData.choices.map((choice, choiceIndex) => `
+                            <label class="option">
+                                <input type="radio" name="question-${index}" value="${choiceIndex}">
+                                ${choice}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+
+                testContainer.appendChild(questionElement);
+
+                // Add event listeners to options
+                const options = questionElement.querySelectorAll('input[type="radio"]');
+                options.forEach(option => {
+                    option.addEventListener('change', () => {
+                        handleAnswer(index, parseInt(option.value));
+                    });
+                });
+            });
+
+            updateProgress();
+        }
+
+        // Handle user's answer
+        function handleAnswer(questionIndex, selectedChoice) {
+            userAnswers[questionIndex] = selectedChoice;
+
+            // Get the correct answer from the randomized questions
+            const correctAnswer = randomizedQuestions[questionIndex].correct;
+
+            // Get all options for this question
+            const optionsContainer = document.getElementById(`options-${questionIndex}`);
+            const options = optionsContainer.querySelectorAll('.option');
+
+            // Reset all options to default state
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+            });
+
+            // Highlight the selected option
+            if (selectedChoice === correctAnswer) {
+                options[selectedChoice].classList.add('correct');
+            } else {
+                options[selectedChoice].classList.add('incorrect');
+                // Also show the correct answer
+                options[correctAnswer].classList.add('correct');
+            }
+
+            // Update score
+            updateScore();
+            updateProgress();
+
+            // Check if all questions are answered
+            if (userAnswers.every(answer => answer !== null)) {
+                showResults();
+            }
+        }
+
+        // Update the score
+        function updateScore() {
+            score = userAnswers.reduce((total, answer, index) => {
+                return total + (answer === randomizedQuestions[index].correct ? 1 : 0);
+            }, 0);
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const answeredCount = userAnswers.filter(answer => answer !== null).length;
+            const progressPercentage = (answeredCount / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        // Show final results
+        function showResults() {
+            scoreElement.textContent = `Score: ${score}/${randomizedQuestions.length}`;
+
+            // Set score message based on performance
+            const percentage = (score / randomizedQuestions.length) * 100;
+            let message = '';
+            if (percentage >= 90) {
+                message = 'Excellent work!';
+            } else if (percentage >= 70) {
+                message = 'Good job!';
+            } else if (percentage >= 50) {
+                message = 'Not bad!';
+            } else {
+                message = 'Keep practicing!';
+            }
+
+            scoreTextElement.textContent = message;
+            resultContainer.classList.add('show');
+        }
+
+        // Event listener for restart button
+        restartBtn.addEventListener('click', initializeTest);
+
+        // Event listener for load exam button
+        loadExamBtn.addEventListener('click', () => {
+            const selectedExam = examSelect.value;
+            loadQuestions(selectedExam);
+        });
+
+        // Initialize the dropdown when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAvailableExams();
+        });
+    </script>
+</body>
+
+</html>

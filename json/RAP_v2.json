@@ -1,0 +1,392 @@
+[
+    {
+        "question": "What is a sensor?",
+        "choices": [
+            "A device that controls movement",
+            "A device that measures an attribute of the world",
+            "A device that stores energy",
+            "A device that produces sound"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which type of sensor puts energy into the environment to enhance data gathering?",
+        "choices": [
+            "Passive sensor",
+            "Analog sensor",
+            "Active sensor",
+            "Digital sensor"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What do passive sensors rely on?",
+        "choices": [
+            "Externally supplied energy",
+            "Environment-provided medium",
+            "Magnetic fields",
+            "Electric motors"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a transducer?",
+        "choices": [
+            "A device that stores heat",
+            "A device that converts energy from one form to another",
+            "A device that sends wireless signals",
+            "A device that produces torque"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is an actuator?",
+        "choices": [
+            "A device for measuring magnetic fields",
+            "A mechanism for moving or controlling something indirectly",
+            "A device for converting temperature",
+            "A computing unit"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which type of sensor error is caused by fluctuating environmental conditions?",
+        "choices": [
+            "Systematic error",
+            "Nonlinearity error",
+            "Random error",
+            "Drift error"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which error occurs due to a consistent measurement bias?",
+        "choices": [
+            "Random error",
+            "Systematic error",
+            "Hysteresis error",
+            "Interference error"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does resolution refer to in sensor characteristics?",
+        "choices": [
+            "How accurate the reading is",
+            "Minimum detectable difference between two values",
+            "How fast the sensor sends data",
+            "The highest measurable value"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which sensor characteristic describes the reproducibility of a measurement?",
+        "choices": [
+            "Sensitivity",
+            "Accuracy",
+            "Precision",
+            "Linearity"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Dynamic range refers to the ratio between:",
+        "choices": [
+            "Upper and lower sensor inputs",
+            "Speed and accuracy",
+            "Input and output voltage",
+            "Signal-to-noise levels"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What do shaft encoders measure?",
+        "choices": [
+            "Rotational or linear motion",
+            "Temperature changes",
+            "Light intensity",
+            "Gas concentrations"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Linear encoders measure:",
+        "choices": [
+            "Rotational movement",
+            "Vibration patterns",
+            "Straight-line motion",
+            "Electric current"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What device measures or maintains orientation and angular velocity?",
+        "choices": [
+            "Accelerometer",
+            "Gyroscope",
+            "Rotary encoder",
+            "Proximity sensor"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Proximity sensors measure:",
+        "choices": [
+            "Temperature",
+            "Electrical resistance",
+            "Relative distance to nearby objects",
+            "Chemical concentration"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which sensor uses acoustic energy to determine distance?",
+        "choices": [
+            "Infrared sensor",
+            "Hall sensor",
+            "Ultrasonic sensor",
+            "Flame sensor"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does a Hall sensor detect?",
+        "choices": [
+            "Temperature",
+            "Magnetic objects",
+            "Gas levels",
+            "Light intensity"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Photoresistors and photovoltaic cells are types of:",
+        "choices": [
+            "Gas sensors",
+            "Light sensors",
+            "Force sensors",
+            "Sound sensors"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "An infrared sensor returns what type of signal when detecting an obstacle?",
+        "choices": [
+            "Analog voltage",
+            "Binary signal",
+            "Color spectrum",
+            "Mechanical vibration"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "A flame sensor detects wavelengths in which range?",
+        "choices": [
+            "200–400 nm",
+            "400–700 nm",
+            "760–1100 nm",
+            "1500–2000 nm"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Gas sensors are commonly used to detect:",
+        "choices": [
+            "Metals and minerals",
+            "LPG, methane, and smoke",
+            "Radio signals",
+            "Water temperature"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "A joystick module outputs values based on:",
+        "choices": [
+            "Sound waves",
+            "Light refraction",
+            "Two analog controls: X and Y",
+            "Magnetic field variation"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Tactile sensors are designed to mimic:",
+        "choices": [
+            "Vision",
+            "Hearing",
+            "Touch",
+            "Temperature sensing"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "A bump sensor triggers when:",
+        "choices": [
+            "Infrared light reflects",
+            "Two layers come into contact",
+            "Gas concentration rises",
+            "Temperature changes"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "A capacitive touch sensor works when an object with ____ characteristics approaches it.",
+        "choices": [
+            "Thermal",
+            "Metallic",
+            "Capacitive",
+            "Chemical"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Computer vision processes data from which spectrum?",
+        "choices": [
+            "Radio spectrum",
+            "Electromagnetic spectrum",
+            "Sound waves",
+            "Thermal energy only"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What distinguishes a CMOS sensor?",
+        "choices": [
+            "Charge transfer process",
+            "Random pixel access",
+            "Use of mercury cells",
+            "Thermal imaging"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "CCD sensors transfer charges:",
+        "choices": [
+            "Randomly",
+            "Directly to memory",
+            "One pixel at a time toward the boundary",
+            "Through heat conduction"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "RGB-D sensors provide both a color image and:",
+        "choices": [
+            "Temperature map",
+            "Magnetic field strength",
+            "Depth map",
+            "Gas concentration"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Sound sensors use what component to convert sound into electrical signals?",
+        "choices": [
+            "Thermistor",
+            "Electret condenser microphone",
+            "Piezo buzzer",
+            "Hall switch"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "RFID tags contain:",
+        "choices": [
+            "Camera lens and diode",
+            "Magnetic coil and heater",
+            "Integrated circuit and antenna",
+            "Sensor and battery"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "LIDAR works by analyzing:",
+        "choices": [
+            "Reflected laser light",
+            "Radio signals",
+            "Sound waves",
+            "Magnetic field variations"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "GPS determines position by receiving signals from:",
+        "choices": [
+            "WiFi routers",
+            "Earth stations",
+            "At least four satellites",
+            "Infrared towers"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What do motors primarily control in robots?",
+        "choices": [
+            "Color sensing",
+            "Movement of joints, wheels, and grippers",
+            "Gas detection",
+            "Sound output"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "A servo motor provides control over:",
+        "choices": [
+            "Color intensity",
+            "Voltage resistance",
+            "Position, speed, and torque",
+            "Electromagnetic fields"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In DC motors, speed is proportional to:",
+        "choices": [
+            "Load type",
+            "Frequency of input power",
+            "Supply voltage",
+            "Magnetic field direction"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Brushed motors contain which two main parts?",
+        "choices": [
+            "Rotor and transistor",
+            "Rotor and stator",
+            "Stator and diode",
+            "Shaft and gear"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Stepper motors are designed for:",
+        "choices": [
+            "Continuous motion",
+            "Random vibration",
+            "Precise discrete angular motion",
+            "Thermal conversion"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Hydraulic actuators are driven by:",
+        "choices": [
+            "Compressed air",
+            "Hydraulic fluid pressure",
+            "Gas expansion",
+            "Electromagnetic force"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Pneumatic actuators convert compressed air into:",
+        "choices": [
+            "Light",
+            "Heat",
+            "Linear or rotary motion",
+            "Sound"
+        ],
+        "correct": 2
+    }
+]
