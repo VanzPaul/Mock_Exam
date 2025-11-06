@@ -1,0 +1,382 @@
+[
+    {
+        "question": "What connects humans, environment, phenomena, and machines, enabling input, processing, and output in embedded systems?",
+        "choices": [
+            "Interfaces",
+            "Pulse Width Modulation (PWM)",
+            "General-Purpose Digital I/O (GPIO)",
+            "Bus"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which interface efficiently delivers variable power by switching signal high/low at fixed frequency, with duty cycle controlling average power?",
+        "choices": [
+            "Pulse Width Modulation (PWM)",
+            "General-Purpose Digital I/O (GPIO)",
+            "Serial Interfaces",
+            "Parallel Interfaces"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What interface reads and writes logic levels (0 or 1) and can be configured as input or output?",
+        "choices": [
+            "General-Purpose Digital I/O (GPIO)",
+            "Pulse Width Modulation (PWM)",
+            "RS-232",
+            "USB"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What logic level interpretation has VDD as logical 1 and 0V as logical 0?",
+        "choices": [
+            "Active-high logic",
+            "Active-low logic",
+            "Tristate logic",
+            "Serial logic"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of logic supports high, low, or off/high-impedance states?",
+        "choices": [
+            "Tristate logic",
+            "Active-high logic",
+            "Active-low logic",
+            "Parallel logic"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of interface transmits bits sequentially over a single line?",
+        "choices": [
+            "Serial Interfaces",
+            "Parallel Interfaces",
+            "Bus",
+            "Pulse Width Modulation (PWM)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which serial interface uses start bit, data bits, stop bit(s), and requires an agreed-upon baud rate?",
+        "choices": [
+            "RS-232",
+            "USB",
+            "JTAG",
+            "Bluetooth"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which interface supports plug-and-play, hot swapping, and has complex control logic for device enumeration and data transfer?",
+        "choices": [
+            "USB",
+            "RS-232",
+            "JTAG",
+            "IEEE-1284"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which interface uses boundary-scan architecture for testing inaccessible circuit nodes?",
+        "choices": [
+            "JTAG (IEEE 1149.1)",
+            "RS-232",
+            "USB",
+            "SCSI"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of interface transmits multiple bits simultaneously over multiple lines?",
+        "choices": [
+            "Parallel Interfaces",
+            "Serial Interfaces",
+            "Bus",
+            "General-Purpose Digital I/O (GPIO)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which parallel interface is bidirectional, asynchronous, uses strobe/acknowledge handshake, and can be implemented with grouped GPIO pins?",
+        "choices": [
+            "IEEE-1284 (printer port)",
+            "RS-232",
+            "USB",
+            "SCSI"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is a shared interface among multiple devices?",
+        "choices": [
+            "Bus",
+            "Serial Interfaces",
+            "Parallel Interfaces",
+            "Module"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which bus interface connects peripherals like disks and sound cards?",
+        "choices": [
+            "SCSI",
+            "IEEE-488 / GPIB / HP-IB",
+            "USB",
+            "Pulse Width Modulation (PWM)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which bus interface is used for automated test equipment?",
+        "choices": [
+            "IEEE-488 / GPIB / HP-IB",
+            "SCSI",
+            "USB",
+            "JTAG"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What integrates electrical components to perform a specific I/O function?",
+        "choices": [
+            "Module",
+            "Interface",
+            "Bus",
+            "Controller"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of modules enable wireless input/output operations?",
+        "choices": [
+            "Wireless I/O Modules",
+            "Serial Interfaces",
+            "Parallel Interfaces",
+            "Bus"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which wireless module uses IR LED for transmission and PN-junction photodiode for reception, and is susceptible to interference from other IR sources?",
+        "choices": [
+            "Infrared (IR) Transmitter/Receiver",
+            "Bluetooth",
+            "Wi-Fi",
+            "GSM"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which wireless technology operates in the 2.4–2.485 GHz ISM band, is packet-based, master-slave, and uses Host Controller Interface (HCI)?",
+        "choices": [
+            "Bluetooth",
+            "Wi-Fi",
+            "Infrared",
+            "GSM"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What interface is used in Bluetooth to connect with the host system?",
+        "choices": [
+            "Host Controller Interface (HCI)",
+            "USB",
+            "RS-232",
+            "JTAG"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which module provides 2G cellular capabilities for voice, SMS, and data, and requires a SIM card?",
+        "choices": [
+            "GSM/GPRS Module",
+            "Bluetooth",
+            "Wi-Fi",
+            "Infrared"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the 2G cellular technology used for voice, SMS, and data?",
+        "choices": [
+            "GSM",
+            "GPRS",
+            "Wi-Fi",
+            "Bluetooth"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the packet-switched data extension of GSM?",
+        "choices": [
+            "GPRS",
+            "GSM",
+            "Wi-Fi",
+            "Bluetooth"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which wireless technology is based on IEEE 802.11, operates in the 2.4-2.5 GHz band, has data rates of 11 Mbps for 802.11b and 54 Mbps for 802.11a, and offers benefits such as wireless Ethernet replacement, extended access and mobility, lower cost, and flexibility for new applications?",
+        "choices": [
+            "Wi-Fi (Wireless Fidelity)",
+            "Bluetooth",
+            "Infrared",
+            "GSM"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What are events that pause current execution to handle other tasks or faults?",
+        "choices": [
+            "Interrupts and Exceptions",
+            "Pulse Width Modulation (PWM)",
+            "General-Purpose Digital I/O (GPIO)",
+            "Atomicity"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is a signal that pauses the current execution to run an Interrupt Service Routine (ISR)?",
+        "choices": [
+            "Interrupt",
+            "Exception",
+            "Atomic operation",
+            "Programmable Interval Timer (PIT)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of interrupt is triggered by an external signal, such as a voltage change?",
+        "choices": [
+            "Hardware interrupt",
+            "Software interrupt",
+            "Exception",
+            "PIT interrupt"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of interrupt is triggered by an instruction or register write?",
+        "choices": [
+            "Software interrupt",
+            "Hardware interrupt",
+            "Exception",
+            "Hardware fault"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is an internal fault that occurs during execution, such as a segmentation fault?",
+        "choices": [
+            "Exception",
+            "Interrupt",
+            "Hardware interrupt",
+            "Software interrupt"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What device counts down to zero and then triggers an interrupt, and can auto-reload for periodic interrupts?",
+        "choices": [
+            "Programmable Interval Timer (PIT)",
+            "Interrupt Controller",
+            "General-Purpose Digital I/O (GPIO)",
+            "Pulse Width Modulation (PWM)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What property means an operation appears indivisible and completes fully or not at all?",
+        "choices": [
+            "Atomicity",
+            "Interrupt",
+            "Exception",
+            "Module"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the hardware logic that manages interrupts and their priorities?",
+        "choices": [
+            "Interrupt Controllers",
+            "Programmable Interval Timer (PIT)",
+            "CPU",
+            "Memory"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the address of an Interrupt Service Routine or its index in a vector table?",
+        "choices": [
+            "Interrupt vector",
+            "Interrupt Controller",
+            "Programmable Interval Timer (PIT)",
+            "Atomic operation"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "In embedded systems, what does 'dynamics' refer to?",
+        "choices": [
+            "The capability to do actions required in a computing system and support all interaction with the outside world",
+            "The speed at which processors operate",
+            "The movement of mechanical parts in robots",
+            "The changing voltage levels in digital circuits"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which of the following is NOT one of the three key aspects of I/O operations as described in embedded systems?",
+        "choices": [
+            "Compiling device drivers",
+            "Communicating with the device",
+            "Programming the device to initiate an I/O request",
+            "Performing actual data transfer between the device and the system"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What material is commonly used in IR transmitter LEDs for high infrared radiation efficiency?",
+        "choices": [
+            "Gallium Arsenide (GaAs)",
+            "Silicon (Si)",
+            "Copper (Cu)",
+            "Aluminum (Al)"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What capability does the GPRS radio resources allocator provide?",
+        "choices": [
+            "Allows the provision of multiple radio channels to a single user",
+            "Prevents interference between different users",
+            "Increases the transmission power of the radio",
+            "Reduces the battery consumption during data transfer"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What type of IP connectivity does GPRS offer?",
+        "choices": [
+            "Point-to-point and point-to-multipoint modes",
+            "Only broadcast mode",
+            "Exclusively unicast mode",
+            "Mesh networking only"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What standard do both Wi-Fi and Ethernet share, making them share some core elements?",
+        "choices": [
+            "IEEE 802 networks",
+            "IEEE 488 standard",
+            "RS-232 protocol",
+            "USB specification"
+        ],
+        "correct": 0
+    }
+]

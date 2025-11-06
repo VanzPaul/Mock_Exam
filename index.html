@@ -145,8 +145,12 @@
             height: 6px;
             background-color: #e9ecef;
             border-radius: 3px;
-            margin-bottom: 20px;
             overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .progress {
@@ -156,6 +160,14 @@
             transition: width 0.5s ease;
         }
 
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            padding-bottom: 26px; /* Add space for the progress bar */
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -163,6 +175,10 @@
 
             .question-container {
                 padding: 15px;
+            }
+            
+            body {
+                padding-bottom: 26px;
             }
         }
     </style>
@@ -182,10 +198,6 @@
             </div>
         </header>
 
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-
         <div id="test-container">
             <!-- Questions will be inserted here by JavaScript -->
         </div>
@@ -195,6 +207,10 @@
             <p class="score-text" id="score-text">Complete the test to see your score!</p>
             <button class="restart-btn" id="restart-btn">Restart Test</button>
         </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
     </div>
 
     <script>
@@ -244,11 +260,23 @@
             };
         }
 
-        // Available exam files - will be loaded dynamically from the server
+        // Available exam files - will be loaded dynamically from the server or cache
         let availableExams = [];
+        let cachedExamData = null;
         
-        // Fetch available exam files from the server
+        // Fetch available exam files from the server and cache their content
         async function loadAvailableExams() {
+            // First, try to load from cache
+            cachedExamData = loadFromCache();
+            
+            if (cachedExamData) {
+                // Use cached data if available and valid
+                availableExams = cachedExamData.availableExams;
+                populateExamDropdown();
+                return;
+            }
+            
+            // If no valid cache, fetch from server
             try {
                 const response = await fetch('/api/exams');
                 if (!response.ok) {
@@ -260,7 +288,8 @@
                 availableExams = examsData.map(exam => {
                     return {
                         value: `json/${exam.name}`, // Add path prefix for loading
-                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // Format filename as label
+                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label
+                        content: exam.content // Store the content directly from the API response
                     };
                 });
                 
@@ -268,17 +297,38 @@
                 try {
                     const rootExamResponse = await fetch('examQuestions.json');
                     if (rootExamResponse.ok) {
-                        availableExams.unshift({ value: 'examQuestions.json', label: 'Robotics Sensors Exam' });
+                        // Fetch the content of examQuestions.json to include in cache
+                        const rootExamContent = await rootExamResponse.json();
+                        availableExams.unshift({ 
+                            value: 'examQuestions.json', 
+                            label: 'Robotics Sensors Exam',
+                            content: rootExamContent
+                        });
                     }
                 } catch (error) {
                     console.log('No root examQuestions.json found, continuing with json directory exams only');
                 }
                 
+                // Now we have all the content, save it to cache
+                const cacheData = {
+                    availableExams: availableExams
+                };
+                saveToCache(cacheData);
+                
                 populateExamDropdown();
             } catch (error) {
                 console.error('Error loading available exams:', error);
-                // Fallback to a default exam if API fails
-                availableExams = [{ value: 'examQuestions.json', label: 'Robotics Sensors Exam' }];
+                
+                // Try to use cache as fallback if API fails
+                cachedExamData = loadFromCache();
+                if (cachedExamData) {
+                    availableExams = cachedExamData.availableExams;
+                    populateExamDropdown();
+                    return;
+                }
+                
+                // If no cache, use a minimal default
+                availableExams = [{ value: 'examQuestions.json', label: 'Robotics Sensors Exam', content: [] }];
                 populateExamDropdown();
             }
         }
@@ -294,9 +344,21 @@
             });
         }
 
-        // Fetch questions from the server based on selected exam
+        // Fetch questions from the server based on selected exam or use cached data
         async function loadQuestions(examFile) {
             try {
+                // First, check if we have the exam in our cached data
+                const cachedExam = availableExams.find(exam => exam.value === examFile);
+                
+                if (cachedExam && cachedExam.content) {
+                    // Use cached content if available
+                    questions = cachedExam.content;
+                    userAnswers = Array(questions.length).fill(null);
+                    initializeTest();
+                    return;
+                }
+                
+                // If not in cache, fetch from server
                 const response = await fetch(examFile);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -306,15 +368,134 @@
                 initializeTest();
             } catch (error) {
                 console.error('Error loading questions:', error);
+                
+                // Try to use cached exam as fallback
+                const cachedExam = availableExams.find(exam => exam.value === examFile);
+                if (cachedExam && cachedExam.content) {
+                    console.log('Using cached exam data as fallback');
+                    questions = cachedExam.content;
+                    userAnswers = Array(questions.length).fill(null);
+                    initializeTest();
+                    return;
+                }
+                
                 testContainer.innerHTML = '<p style="color: red;">Failed to load questions. Please try again later.</p>';
             }
+        }
+
+        // Cache management functions
+        const CACHE_KEY = 'examDataCache';
+        
+        // Function to save exam data to localStorage
+        function saveToCache(examData) {
+            try {
+                const cacheData = {
+                    timestamp: Date.now(),
+                    examData: examData
+                };
+                localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+                console.log('Exam data saved to cache');
+            } catch (error) {
+                console.error('Failed to save to cache:', error);
+            }
+        }
+        
+        // Function to load exam data from localStorage
+        function loadFromCache() {
+            try {
+                const cachedData = localStorage.getItem(CACHE_KEY);
+                if (cachedData) {
+                    const parsedData = JSON.parse(cachedData);
+                    // Check if cache is still valid (less than 24 hours old)
+                    const cacheAge = Date.now() - parsedData.timestamp;
+                    const maxCacheAge = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+                    if (cacheAge < maxCacheAge) {
+                        console.log('Loaded exam data from cache');
+                        return parsedData.examData;
+                    } else {
+                        console.log('Cache expired, will fetch fresh data');
+                        return null;
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load from cache:', error);
+            }
+            return null;
+        }
+        
+        // Function to clear the cache
+        function clearCache() {
+            localStorage.removeItem(CACHE_KEY);
+        }
+        
+        // Function to refresh the cache by fetching fresh data from the server
+        async function refreshCache() {
+            try {
+                const response = await fetch('/api/exams');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const examsData = await response.json();
+                
+                // Convert the API response to the format expected by the UI
+                const refreshedAvailableExams = examsData.map(exam => {
+                    return {
+                        value: `json/${exam.name}`, // Add path prefix for loading
+                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label
+                        content: exam.content // Store the content directly from the API response
+                    };
+                });
+                
+                // Add the root directory examQuestions.json if it exists
+                try {
+                    const rootExamResponse = await fetch('examQuestions.json');
+                    if (rootExamResponse.ok) {
+                        // Fetch the content of examQuestions.json to include in cache
+                        const rootExamContent = await rootExamResponse.json();
+                        refreshedAvailableExams.unshift({ 
+                            value: 'examQuestions.json', 
+                            label: 'Robotics Sensors Exam',
+                            content: rootExamContent
+                        });
+                    }
+                } catch (error) {
+                    console.log('No root examQuestions.json found, continuing with json directory exams only');
+                }
+                
+                // Save the refreshed data to cache
+                const cacheData = {
+                    availableExams: refreshedAvailableExams
+                };
+                saveToCache(cacheData);
+                
+                // Update the availableExams variable
+                availableExams = refreshedAvailableExams;
+                
+                console.log('Cache refreshed successfully');
+                return true;
+            } catch (error) {
+                console.error('Error refreshing cache:', error);
+                return false;
+            }
+        }
+
+        // Function to shuffle an array using Fisher-Yates algorithm
+        function shuffleArray(array) {
+            const newArray = [...array]; // Create a copy to avoid mutating the original
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
         }
 
         // Initialize the test
         function initializeTest() {
             testContainer.innerHTML = '';
-            // Randomize questions array as well for extra variety (optional)
-            randomizedQuestions = questions.map(question => randomizeQuestion(question));
+            // First, shuffle the order of questions
+            const shuffledQuestions = shuffleArray(questions);
+            // Then, randomize choices within each question
+            randomizedQuestions = shuffledQuestions.map(question => randomizeQuestion(question));
             userAnswers = Array(randomizedQuestions.length).fill(null);
             score = 0;
             resultContainer.classList.remove('show');
@@ -359,6 +540,7 @@
             // Get all options for this question
             const optionsContainer = document.getElementById(`options-${questionIndex}`);
             const options = optionsContainer.querySelectorAll('.option');
+            const radioButtons = optionsContainer.querySelectorAll('input[type="radio"]');
 
             // Reset all options to default state
             options.forEach(option => {
@@ -373,6 +555,11 @@
                 // Also show the correct answer
                 options[correctAnswer].classList.add('correct');
             }
+
+            // Disable all radio buttons for this question after selection
+            radioButtons.forEach(radio => {
+                radio.disabled = true;
+            });
 
             // Update score
             updateScore();
@@ -420,7 +607,11 @@
         }
 
         // Event listener for restart button
-        restartBtn.addEventListener('click', initializeTest);
+        restartBtn.addEventListener('click', () => {
+            initializeTest();
+            // Scroll back to the top when restart button is clicked
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Event listener for load exam button
         loadExamBtn.addEventListener('click', () => {
@@ -430,6 +621,8 @@
 
         // Initialize the dropdown when the page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Clear the cache to ensure fresh data is loaded
+            clearCache();
             loadAvailableExams();
         });
     </script>
