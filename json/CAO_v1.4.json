@@ -1,0 +1,1072 @@
+[
+    {
+        "question": "What is a procedure in programming?",
+        "choices": [
+            "A specialized debugging feature used primarily for locating software errors",
+            "A self-contained program module that is integrated into a larger application",
+            "A physical hardware component responsible for executing processor instructions",
+            "A specific type of memory unit designed for long-term data storage"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What are procedures considered in programming?",
+        "choices": [
+            "the most important innovation in the development of programming languages",
+            "a minor feature used only for backward compatibility in old systems",
+            "a debugging technique primarily used during program testing phases",
+            "an optional coding style that has no impact on program structure"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "At what point in a program can a procedure be invoked or called?",
+        "choices": [
+            "Only at the beginning of the program",
+            "Only after all variables are declared",
+            "At any point in the program",
+            "Only within other procedures"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What happens when a procedure is invoked?",
+        "choices": [
+            "The processor executes the entire procedure and then returns to the point where the call originally occurred",
+            "The processor stops running and waits for user input before continuing the main program",
+            "The procedure replaces the calling code entirely and never returns control afterward",
+            "The processor ignores all remaining instructions and restarts execution from the beginning of memory"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is another term commonly used for procedures?",
+        "choices": [
+            "Functions",
+            "Arrays",
+            "Subroutines",
+            "Objects"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "They can only be used once in a program",
+            "They allow the same piece of code to be used multiple times",
+            "They must always be written in a separate file",
+            "They cannot accept parameters"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "They increase memory usage significantly",
+            "They improve efficient use of storage space in a system",
+            "They require special hardware to execute",
+            "They can only be called from the main program"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "They merge several programming operations together into one large unified block",
+            "They restrict the reuse of existing code and limit modular program design",
+            "They enable large programming tasks to be divided into smaller and more manageable parts",
+            "They require being written using a particular programming language or syntax"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "They complicate the programming tasks",
+            "They greatly ease the programming tasks",
+            "They can only be written by expert programmers",
+            "They require additional hardware resources"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "They can only be called from one specific location",
+            "They can be called from more than one location",
+            "They can only call other procedures but cannot be called themselves",
+            "They must be called in a specific sequence"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "A procedure call is not allowed to appear inside any other procedure at all",
+            "Procedure calls are required to remain at exactly the same nesting level always",
+            "A procedure call may appear within another procedure, allowing nesting to any depth",
+            "Procedures are restricted so they can only be nested up to a fixed and limited depth"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a characteristic of procedures?",
+        "choices": [
+            "Procedure calls operate without needing any form of return instruction afterward",
+            "All procedure calls are properly matched by a return instruction within the called routine",
+            "Return instructions may be used if desired but are generally not required in procedures",
+            "Return instructions must always be placed at the very beginning of every procedure"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Where can the return address be stored when calling a procedure?",
+        "choices": [
+            "Only within temporary cache memory used by the processor during execution",
+            "Only at the very top of the stack where call information is normally placed",
+            "In a register, at the start of the procedure, or stored directly on the stack",
+            "Only inside specific hardware registers reserved solely for control flow"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a reentrant procedure?",
+        "choices": [
+            "A procedure that is limited to execution by only a single process at any moment",
+            "A procedure that ends unexpectedly because of an abnormal termination event",
+            "A procedure designed so multiple processes can run it simultaneously without conflict",
+            "A procedure that is restricted and unable to receive any form of input parameters"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What must be done when parameters are passed via register or memory for a reentrant procedure?",
+        "choices": [
+            "The parameters must be cleared right after they are used so the occupied resources are freed",
+            "A dedicated code section must save the parameters so the register or memory can be reused by other calls",
+            "The procedure must prevent any concurrent calls until its own execution has completely finished",
+            "The parameters should be copied into the instruction queue to ensure they remain protected"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What instruction branches from the present location to a procedure?",
+        "choices": [
+            "JMP instruction",
+            "MOV instruction",
+            "CALL instruction",
+            "RET instruction"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What instruction returns the control to the place from which a procedure was called?",
+        "choices": [
+            "JMP instruction",
+            "CALL instruction",
+            "PUSH instruction",
+            "RET instruction"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What happens when a CALL instruction is used in a microprocessor?",
+        "choices": [
+            "The next instruction address is saved temporarily inside a processor register",
+            "The next instruction address in the program is placed securely onto the stack",
+            "The entire contents of the stack are cleared before execution continues",
+            "The processor stops running briefly before resuming its operations"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What happens when a CALL instruction is used in a microprocessor?",
+        "choices": [
+            "The instruction queue becomes filled with unrelated placeholder values",
+            "The instruction queue is cleared so it can load the procedure’s instructions",
+            "The instruction queue is copied entirely into another temporary buffer",
+            "The instruction queue is ignored and not used during the procedure call"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What happens when a CALL instruction is used in a microprocessor?",
+        "choices": [
+            "The instruction pointer is forced to restart execution from address zero",
+            "The instruction pointer is updated with the starting address of the procedure",
+            "The instruction pointer is increased based on the total size of the procedure",
+            "The instruction pointer remains unchanged until the procedure is complete"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What happens when a CALL instruction is used in a microprocessor?",
+        "choices": [
+            "The instructions of the procedure are written directly into system memory",
+            "The following instructions of the procedure are placed into the instruction queue",
+            "The processor skips over every instruction contained in the procedure entirely",
+            "The instruction queue becomes locked and requires a manual reset to unlock"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a Near CALL instruction?",
+        "choices": [
+            "An instruction used to call a procedure located inside a completely different segment",
+            "An instruction used to call a procedure that resides within the same code segment as the caller",
+            "An instruction intended specifically for calling procedures that include parameter values",
+            "An instruction that is restricted and may only be executed while operating in protected mode"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a Far CALL instruction?",
+        "choices": [
+            "An instruction used to call a procedure that resides within the same code segment as the caller",
+            "An instruction used to call a procedure located in a different segment than the caller",
+            "An instruction intended only for procedures with no return statements",
+            "An instruction that bypasses the stack and uses direct memory addressing"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This instruction pushes the current IP value onto the stack and causes a jump to the entry point of the procedure by placing the address of the entry point in the IP. This basically calls a procedure of a function.",
+        "choices": [
+            "CALL Label (Near)",
+            "CALL Label (Far)",
+            "CALL Address",
+            "CALL Memory (Near)"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "This instruction pushes the content of the IP onto the stack and jumps to the offset address in the current code segment.",
+        "choices": [
+            "CALL Address",
+            "CALL Label (Near)",
+            "CALL Label (Far)",
+            "CALL Memory (Far)"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This instruction pushes the content of the IP onto the stack and jumps to the offset address in any memory location.",
+        "choices": [
+            "CALL Label (Far)",
+            "CALL Label (Near)",
+            "CALL Memory (Near)",
+            "CALL Address"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "This instruction pushes the content of the IP onto the stack and jumps to the offset address in the memory register of the current code segment.",
+        "choices": [
+            "CALL Memory (Far)",
+            "CALL Label (Near)",
+            "CALL Memory (Near)",
+            "CALL Address"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "This instruction pushes the content of the IP onto the stack and jumps to the offset address of the register at any memory location.",
+        "choices": [
+            "CALL Label (Far)",
+            "CALL Memory (Near)",
+            "CALL Address",
+            "CALL Memory (Far)"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What activity takes place inside the microprocessor when the RET instruction is used?",
+        "choices": [
+            "The address of the next instruction in the mainline program, which was previously stored inside the stack, is fetched again and is placed inside the instruction pointer (IP).",
+            "The instruction pointer is completely reset to zero, causing the processor to begin execution again from the very start of the program memory layout.",
+            "The return address stored on the stack is permanently discarded, preventing the processor from ever returning to the original calling location.",
+            "The processor switches into protected mode automatically before resuming execution, even if the system was not originally operating in that mode."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What activity takes place inside the microprocessor when the RET instruction is used?",
+        "choices": [
+            "The instruction queue is cleared of all contents and left entirely empty, remaining unused until a future CALL instruction repopulates it with new entries.",
+            "The instruction queue will again be filled with the subsequent instructions of the mainline program.",
+            "The instruction queue temporarily stores instructions from the previously executed procedure so that they can be reused or re-executed if needed.",
+            "The instruction queue becomes disabled and remains non-functional until a specific reload command or system event explicitly reactivates it."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This instruction returns the address from a near procedure by replacing the instruction pointer (IP) with a word from the top of the stack. Possible algorithms include: Pop from stack → IP; if an immediate operand is present, SP = SP + operand.",
+        "choices": [
+            "CALL",
+            "JMP",
+            "RET",
+            "RETF"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "This instruction returns the address from a far procedure by replacing registers with values from the top of the stack (typically IP and CS). Possible algorithms include: Pop from stack → IP or CS; if an immediate operand is present, SP = SP + operand.",
+        "choices": [
+            "CALLF",
+            "RET",
+            "JMPF",
+            "RETF"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is a defining feature of a branch instruction according to Stallings (2019)?",
+        "choices": [
+            "It always resets the instruction pointer back to the start of memory, forcing the entire program to restart from its initial instruction sequence",
+            "It contains the address of the next instruction to be executed as one of its operands",
+            "It can only be used inside looping constructs and cannot appear in any other form of program control or decision structure",
+            "It directly updates and alters the value stored in the accumulator register before normal program execution continues"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the primary purpose of branch instructions in programming?",
+        "choices": [
+            "These instructions are used to allocate memory dynamically for various program operations",
+            "These instructions are used to implement control flow in program loops and conditionals",
+            "These instructions are used to perform arithmetic operations on registers during execution",
+            "These instructions are used to initialize peripheral devices before they can be accessed"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This is a branch instruction classification wherein the instruction contains the target address.",
+        "choices": [
+            "Direct",
+            "Indirect",
+            "Relative",
+            "Absolute"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "This is a branch instruction classification wherein the instruction specifies where the target address is to be found.",
+        "choices": [
+            "Direct",
+            "Indirect",
+            "Relative",
+            "Immediate"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This is a branch instruction classification wherein the instruction specifies the difference between the current and the target address.",
+        "choices": [
+            "Direct",
+            "Indirect",
+            "Relative",
+            "Offset-based"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In computer organization, what does the term 'branch' refer to in the context of instruction execution?",
+        "choices": [
+            "The duplication of the current instruction so it can be processed in parallel by different execution units within the processor",
+            "The act of switching execution to a different instruction sequence as a result of executing a branch instruction",
+            "The process of loading an entirely new program into memory before continuing with further instruction execution",
+            "The termination of the currently running program followed by the immediate start of an entirely new one"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "How are branches classified based on the direction of the target address relative to the current instruction?",
+        "choices": [
+            "As internal or external branches depending on whether they stay within the same code region or jump outside it",
+            "As forward (to instructions with higher addresses) or backward (to instructions with lower addresses)",
+            "As direct or indirect branches based on whether the target address is given explicitly or obtained indirectly",
+            "As near or far branches depending on whether the jump stays within the current segment or crosses into another"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which of the following is a way a branch instruction computes the target address?",
+        "choices": [
+            "The target address is the sum of a constant and the address of the branch instruction itself.",
+            "The target address is determined by combining the stack pointer with an offset similar in scale and usage.",
+            "The target address is processed by zero-extending a computed value that matches the overall format length.",
+            "The target address is produced through a hardware mechanism that applies a key-based transformation process."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which of the following is a way a branch instruction computes the target address?",
+        "choices": [
+            "The target address is computed using only selected lower bits of the program counter.",
+            "The target address is the absolute address given as an operand to the instruction.",
+            "The target address is obtained from an I/O port that stores a similarly sized address value.",
+            "The target address is produced by rotating an internal value left by four bits before use."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which of the following is a way a branch instruction computes the target address?",
+        "choices": [
+            "The target address is taken from the status register as a similarly sized internal value.",
+            "The target address is generated by hashing the instruction to produce a comparable address value.",
+            "The target address is the address found in the link register.",
+            "The target address is formed by combining it with a timestamp to create a similarly sized result."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which of the following is a way a branch instruction computes the target address?",
+        "choices": [
+            "The target address is the address found in the count register.",
+            "The target address is taken from the data segment register.",
+            "The target address is derived by adjusting the opcode length.",
+            "The target address is chosen by a simple scheduling step."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What are the two main categories of branch instructions?",
+        "choices": [
+            "Direct branches and indirect branches",
+            "Forward branches and backward branches",
+            "Unconditional branches and conditional branches",
+            "Near branches and far branches"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which type of branch instruction always results in branching?",
+        "choices": [
+            "Conditional branch",
+            "Relative branch",
+            "Unconditional branch",
+            "Indirect branch"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which type of branch instruction may or may not cause branching, depending on specified conditions?",
+        "choices": [
+            "Unconditional branch",
+            "Absolute branch",
+            "Direct branch",
+            "Conditional branch"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Why can the address of the next instruction following a conditional branch instruction not be confirmed immediately?",
+        "choices": [
+            "Because the processor may enter a brief sleep state that prevents immediate confirmation",
+            "Because the instruction must go through a short decryption step before the address is known",
+            "Because the address depends on the outcome of the branch condition evaluation",
+            "Because memory access may experience a delay that affects when the address is known"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What happens if the branch condition of a conditional branch instruction is not satisfied?",
+        "choices": [
+            "The processor halts execution and continues no further operations in the program flow",
+            "The processor jumps to a random address that is unrelated to the intended program path",
+            "The processor executes the instruction that follows the conditional branch",
+            "The processor re-executes the branch instruction instead of moving on as normally expected"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What happens if the branch condition of a conditional branch instruction is satisfied?",
+        "choices": [
+            "The processor returns to the beginning of the program and resumes execution from there",
+            "The next instruction is at the address indicated in the conditional branch instruction",
+            "The processor skips over the next two instructions as part of the branching behavior",
+            "The processor clears the instruction queue before continuing with subsequent operations"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the primary purpose of jump instructions?",
+        "choices": [
+            "To store data in memory so that the program can preserve important values for later use during execution",
+            "To facilitate the transfer of the program sequence to the memory address given in the operand, based on the specified flag",
+            "To increment the instruction pointer automatically as the processor advances through instructions in normal program flow",
+            "To clear the processor’s flag register so that all condition indicators are reset before further operations occur"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "How do jump instructions affect the execution flow in a processor?",
+        "choices": [
+            "They pause execution until an interrupt occurs, temporarily stopping the CPU’s normal instruction sequence",
+            "They change the execution flow by jumping to any instruction in between the code",
+            "They only allow forward movement in the instruction sequence, restricting the program to advance in one direction",
+            "They prevent branching in the program logic by blocking any changes to the intended control flow"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Based on what do jump instructions determine whether to alter program flow?",
+        "choices": [
+            "The size of the instruction queue",
+            "The value of the stack pointer",
+            "The specified flag in the flag register",
+            "The current code segment limit"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Into how many types are jump instructions divided in the 8086 microprocessor?",
+        "choices": [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is true about Unconditional Jump Instructions?",
+        "choices": [
+            "They require a specific flag to be set before jumping",
+            "They jump only if the zero flag is cleared",
+            "They jump to a particular location without requiring any condition to be satisfied",
+            "They can only be used within procedures"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What defines a Near JMP instruction?",
+        "choices": [
+            "It targets a memory location outside the current segment",
+            "It uses a 1-byte offset and stays within the same segment",
+            "It targets a memory location within the same code segment (intra-segment)",
+            "It requires the carry flag to be set"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a characteristic of the Short JMP instruction?",
+        "choices": [
+            "It targets memory outside the current segment",
+            "It uses a double-word instruction pointer",
+            "It targets within the same code segment with a 1-byte offset",
+            "It checks the parity flag before jumping"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What distinguishes a Far JMP instruction?",
+        "choices": [
+            "It only works in protected mode",
+            "It targets a memory location within the same code segment",
+            "It targets a memory location outside the segment and uses a double-word instruction pointer",
+            "It uses a 1-byte offset for addressing"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is required for a Conditional Jump Instruction to execute a jump?",
+        "choices": [
+            "The instruction queue must be empty",
+            "A specific condition must be checked and satisfied",
+            "The stack must contain a return address",
+            "The program must be in a subroutine"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is tested to determine whether a conditional jump should occur?",
+        "choices": [
+            "The instruction pointer value",
+            "The size of the code segment",
+            "Each status flag or a combination of status flags",
+            "The address of the next instruction in memory"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which of the following is NOT a status flag used in conditional jumps?",
+        "choices": [
+            "Carry flag (C)",
+            "Parity flag (P)",
+            "Auxiliary carry flag (A)",
+            "Instruction flag (I)"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What does the 'Z' in status flags stand for in conditional jump operations?",
+        "choices": [
+            "Zero flag",
+            "Zone flag",
+            "Zeta flag",
+            "Jump flag"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which flag corresponds to the letter 'S' in conditional jump instructions?",
+        "choices": [
+            "Status flag",
+            "Sign flag",
+            "Stack flag",
+            "Segment flag"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the 'P' stand for in the context of status flags used for conditional jump instructions?",
+        "choices": [
+            "Program flag",
+            "Parity flag",
+            "Processor flag",
+            "Positive flag"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which flag is tested by jump instructions such as JP and JNP to determine if the number of set bits in the low byte of the result is even or odd?",
+        "choices": [
+            "Zero flag (Z)",
+            "Sign flag (S)",
+            "Parity flag (P)",
+            "Auxiliary carry flag (A)"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the 'A' represent in the set of status flags used for conditional jumps in the 8086 microprocessor?",
+        "choices": [
+            "Auxiliary carry flag",
+            "Address flag",
+            "Arithmetic flag",
+            "Access flag"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "The auxiliary carry flag (A) is primarily used for which type of arithmetic operations?",
+        "choices": [
+            "Floating-point multiplication",
+            "16-bit subtraction",
+            "BCD (Binary-Coded Decimal) arithmetic",
+            "Logical AND operations"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the 'O' stand for in the context of 8086 status flags used for conditional jump instructions?",
+        "choices": [
+            "Output flag",
+            "Overflow flag",
+            "Operand flag",
+            "Odd parity flag"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which flag is set when the result of a signed arithmetic operation is too large to fit in the destination operand?",
+        "choices": [
+            "Carry flag (C)",
+            "Zero flag (Z)",
+            "Overflow flag (O)",
+            "Parity flag (P)"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if the 1st operand is above the 2nd operand (as set by the CMP instruction); Unsigned?",
+        "choices": [
+            "JAE Label",
+            "JB Label",
+            "JA Label",
+            "JBE Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the algorithm for the JA Label instruction?",
+        "choices": [
+            "If C=1, then jump.",
+            "If C=0 or Z=1, then jump.",
+            "If C=0 and Z=0, then jump.",
+            "If Z=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if the 1st operand is above or equal to the 2nd operand (as set by the CMP instruction); Unsigned?",
+        "choices": [
+            "JA Label",
+            "JBE Label",
+            "JAE Label",
+            "JC Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the algorithm for the JAE Label instruction?",
+        "choices": [
+            "If C=1, then jump.",
+            "If C=0 and Z=0, then jump.",
+            "If Z=1, then jump.",
+            "If C=0, then jump."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if 1st operand is below the 2nd operand (as set by the CMP instruction); Unsigned?",
+        "choices": [
+            "JBE Label",
+            "JB Label",
+            "JA Label",
+            "JC Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JB Label instruction?",
+        "choices": [
+            "If C=0, then jump.",
+            "If C=1 or Z=1, then jump.",
+            "If Z=0, then jump.",
+            "If C=1, then jump."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if 1st operand is below or equal to the 2nd operand (as set by CMP instruction); Unsigned?",
+        "choices": [
+            "JB Label",
+            "JBE Label",
+            "JAE Label",
+            "JA Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JBE Label instruction?",
+        "choices": [
+            "If C=0 and Z=0, then jump.",
+            "If C=0, then jump.",
+            "If C=1 or Z=1, then jump.",
+            "If Z=0, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if carry flag is set to 1?",
+        "choices": [
+            "JAE Label",
+            "JC Label",
+            "JB Label",
+            "JA Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JC Label instruction?",
+        "choices": [
+            "If Z=1, then jump.",
+            "If C=0, then jump.",
+            "If C=1 or Z=1, then jump.",
+            "If C=1, then jump."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if 1st operand is equal to 2nd operand (as set by the CMP instruction); Either signed or unsigned?",
+        "choices": [
+            "JG Label",
+            "JMP Label",
+            "JE Label",
+            "JS Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the algorithm for the JE Label instruction?",
+        "choices": [
+            "If S=1, then jump.",
+            "If Z=1, then jump.",
+            "If P=0, then jump.",
+            "Always jump."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if 1st operand is greater than the 2nd operand (as set by the CMP instruction); Signed?",
+        "choices": [
+            "JE Label",
+            "JG Label",
+            "JNS Label",
+            "JO Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JG Label instruction?",
+        "choices": [
+            "If Z=1, then jump.",
+            "If S=1, then jump.",
+            "If Z=0 and S=F, then jump.",
+            "If O=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs an unconditional jump; transfers control to another part of the program; and accepts a 4-byte address in the form: 1234h:5678h, where the 1st value is a segment and the 2nd value is an offset?",
+        "choices": [
+            "JE Label",
+            "JMP Label",
+            "JP Label",
+            "JO Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JMP Label instruction?",
+        "choices": [
+            "If Z=0 and S=F, then jump.",
+            "If P=1, then jump.",
+            "Always jump.",
+            "If C=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if no parity (odd); where only the 8 low bits of the result are checked; and is set by the CMP, SUB, ADD, TEST, AND, OR, or XOR instructions?",
+        "choices": [
+            "JP Label",
+            "JNP Label",
+            "JNS Label",
+            "JS Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JNP Label instruction?",
+        "choices": [
+            "If P=1, then jump.",
+            "If S=0, then jump.",
+            "If P=0, then jump.",
+            "If Z=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if parity (even); where only the 8 low bits of the result are checked; and is set by the CMP, SUB, ADD, TEST, AND, OR, or XOR instructions?",
+        "choices": [
+            "JNP Label",
+            "JP Label",
+            "JE Label",
+            "JO Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JP Label instruction?",
+        "choices": [
+            "If P=0, then jump.",
+            "If Z=1, then jump.",
+            "If P=1, then jump.",
+            "If S=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if not signed (if positive); and is set by CMP, SUB, ADD, TEST, AND, OR, or XOR instructions?",
+        "choices": [
+            "JS Label",
+            "JNS Label",
+            "JG Label",
+            "JO Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JNS Label instruction?",
+        "choices": [
+            "If S=1, then jump.",
+            "If S=0, then jump.",
+            "If Z=0, then jump.",
+            "If O=0, then jump."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if signed (if negative); and is set by CMP, SUB, ADD, TEST, AND, OR, or XOR instructions?",
+        "choices": [
+            "JNS Label",
+            "JS Label",
+            "JP Label",
+            "JB Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the JS Label instruction?",
+        "choices": [
+            "If S=0, then jump.",
+            "If Z=1, then jump.",
+            "If S=1, then jump.",
+            "If P=1, then jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which Emu8086 jump instruction performs a short jump if overflow?",
+        "choices": [
+            "JO Label",
+            "JC Label",
+            "JE Label",
+            "JG Label"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the algorithm for the JO Label instruction?",
+        "choices": [
+            "If C=1, then jump.",
+            "If O=0, then jump.",
+            "If Z=1, then jump.",
+            "If O=1, then jump."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is a loop in programming?",
+        "choices": [
+            "A single statement that terminates program execution when a defined stopping condition is reached",
+            "A block of statements that are executed once without repetition regardless of any conditions provided",
+            "A block of statements that are repeatedly executed until a specific condition is satisfied",
+            "A hardware component that manages and directs the overall instruction flow within the processor"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which instruction is commonly used to implement loops in assembly language?",
+        "choices": [
+            "CALL",
+            "RET",
+            "JMP",
+            "MOV"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Why are dedicated loop instructions included in the processor instruction set?",
+        "choices": [
+            "To replace all conditional jump instructions in basic control operations",
+            "To implement iterations more conveniently than using basic jump instructions",
+            "To disable the use of JMP for loops in normal program flow",
+            "To increase memory usage during looping operations"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 instruction decreases the CX register and jumps to the specified label if CX is not zero?",
+        "choices": [
+            "LOOPE Label",
+            "LOOPNE Label",
+            "JCXZ Label",
+            "LOOP Label"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is the algorithm for the LOOP Label instruction?",
+        "choices": [
+            "• CX = CX + 1 • If CX ≠ 0 then jump",
+            "• CX = CX – 1 • If CX ≠ 0 then jump else no jump, continue",
+            "• CX = 0 • Always jump",
+            "• CX = CX – 1 • If Z = 1 then jump"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 instruction decreases the CX register and jumps to the label if CX is not zero and the zero flag (Z) is set to 1?",
+        "choices": [
+            "LOOP Label",
+            "LOOPE/LOOPZ Label",
+            "LOOPNE/LOOPNZ Label",
+            "JCXZ Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the algorithm for the LOOPE/LOOPZ Label instruction?",
+        "choices": [
+            "• CX = CX – 1 • If CX ≠ 0 and Z = 1 then jump else no jump, continue",
+            "• CX = CX – 1 • If CX = 0 then jump",
+            "• CX = CX – 1 • If Z = 0 then jump",
+            "• CX = CX + 1 • If Z = 1 then jump"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which x86 instruction decreases the CX register and jumps to the label if CX is not zero and the zero flag (Z) is zero (indicating not equal)?",
+        "choices": [
+            "LOOP Label",
+            "LOOPE/LOOPZ Label",
+            "LOOPNE/LOOPNZ Label",
+            "JCXZ Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the algorithm for the LOOPNE/LOOPNZ Label instruction?",
+        "choices": [
+            "• CX = CX – 1 • If CX ≠ 0 and Z = 0 then jump else no jump, continue",
+            "• CX = CX – 1 • If CX = 0 or Z = 1 then jump",
+            "• CX = CX + 1 • If Z = 0 then jump",
+            "• CX = 0 • If Z = 0 then jump"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which x86 instruction performs a short jump if the CX register is 0?",
+        "choices": [
+            "LOOP Label",
+            "LOOPE Label",
+            "JCXZ Label",
+            "LOOPNE Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the algorithm for the JCXZ Label instruction?",
+        "choices": [
+            "If CX ≠ 0, then jump",
+            "If Z = 1, then jump",
+            "If CX = 0, then jump",
+            "If CX = 0 and Z = 1, then jump"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What happens once a loop or a subroutine is entered in a program?",
+        "choices": [
+            "The processor halts until user input is received",
+            "New instructions are dynamically generated for each iteration",
+            "There are repeated referencing to a small set of instructions",
+            "All previous instructions are deleted from memory"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Why do programs typically contain iterative loops and subroutines?",
+        "choices": [
+            "To increase the total number of unique instructions executed in the program",
+            "To reduce the need for memory allocation during execution",
+            "To enable repeated execution of a small set of instructions efficiently",
+            "To bypass the use of the instruction pointer in program flow"
+        ],
+        "correct": 2
+    }
+]
