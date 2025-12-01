@@ -555,6 +555,11 @@
             }
         }
 
+        // Function to convert newline characters to HTML <br> tags
+        function convertNewlinesToHTML(text) {
+            return text.replace(/\n/g, '<br>');
+        }
+
         // Function to shuffle an array using Fisher-Yates algorithm
         function shuffleArray(array) {
             const newArray = [...array]; // Create a copy to avoid mutating the original
@@ -582,17 +587,22 @@
                 const questionElement = document.createElement('div');
                 questionElement.className = 'question-container';
                 questionElement.id = `question-${index}`;
-                questionElement.innerHTML = `
-                    <div class="question-text">${index + 1}. ${questionData.question}</div>
-                    <div class="options-container" id="options-${index}">
-                        ${questionData.choices.map((choice, choiceIndex) => `
-                            <label class="option">
-                                <input type="radio" name="question-${index}" value="${choiceIndex}">
-                                ${choice}
-                            </label>
-                        `).join('')}
-                    </div>
-                `;
+                // Format question and choices to handle newlines
+                const formattedQuestion = convertNewlinesToHTML(questionData.question);
+                const formattedChoicesHTML = questionData.choices.map((choice, choiceIndex) =>
+                    '<label class="option">' +
+                    '<input type="radio" name="question-' + index + '" value="' + choiceIndex + '">' +
+                    convertNewlinesToHTML(choice) +
+                    '</label>'
+                ).join('');
+
+                // Build complete HTML string with formatted content
+                const questionHTML = '<div class="question-text">' + (index + 1) + '. ' + formattedQuestion + '</div>' +
+                    '<div class="options-container" id="options-' + index + '">' +
+                    formattedChoicesHTML +
+                    '</div>';
+
+                questionElement.innerHTML = questionHTML;
 
                 testContainer.appendChild(questionElement);
 
