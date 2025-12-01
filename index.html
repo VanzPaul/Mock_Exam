@@ -160,65 +160,12 @@
             transition: width 0.5s ease;
         }
 
-        .vertical-progress-container {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 100vh;
-            background-color: #f0f0f0;
-            z-index: 999;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 60px;
-            /* This is default, but can be overridden by JavaScript */
-        }
-
-        .vertical-progress-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 5px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .vertical-progress-indicator.answered {
-            background-color: #2ecc71;
-        }
-
-        .vertical-progress-indicator.missed {
-            background-color: #e74c3c;
-        }
-
-        .vertical-progress-indicator.unanswered {
-            background-color: #bdc3c7;
-        }
-
-        .vertical-progress-indicator:hover {
-            transform: scale(1.2);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            background-color: rgba(52, 152, 219, 0.5);
-            z-index: 1;
-            transition: top 0.1s ease;
-        }
-
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             padding: 20px;
-            padding-left: 40px;
-            /* Add space for the vertical progress bar */
-            padding-bottom: 26px;
+            padding-left: 20px;
             /* Add space for the progress bar */
         }
 
@@ -239,9 +186,6 @@
 </head>
 
 <body>
-    <div class="vertical-progress-container" id="vertical-progress-container">
-        <div class="scroll-indicator" id="scroll-indicator"></div>
-    </div>
     <div class="container">
         <header>
             <h1>Multiple Choice Test</h1>
@@ -285,18 +229,12 @@
         const subjectSelect = document.getElementById('subject-select');
         const examSelect = document.getElementById('exam-select');
         const loadExamBtn = document.getElementById('load-exam-btn');
-        const verticalProgressContainer = document.getElementById('vertical-progress-container');
-        const scrollIndicator = document.getElementById('scroll-indicator');
 
         // Global variables to store original and randomized questions
         let questions = []; // Original questions from JSON
         let randomizedQuestions = []; // Randomized questions for display
         let userAnswers = [];
         let score = 0;
-
-        // Global variables for vertical progress bar adjustments
-        const VERTICAL_PROGRESS_OFFSET = 15; // Pixels of offset from top (adjustable)
-        const VERTICAL_SCROLL_INDICATOR_MIN_HEIGHT = 2; // Minimum height of the scroll indicator in percent (adjustable)
 
         // Function to shuffle choices and update the correct answer index accordingly
         function randomizeQuestion(question) {
@@ -630,19 +568,6 @@
         // Initialize the test
         function initializeTest() {
             testContainer.innerHTML = '';
-            // Clear only the question indicators, keep the scroll indicator
-            const existingScrollIndicator = document.querySelector('.scroll-indicator');
-            verticalProgressContainer.innerHTML = ''; // Clear everything first
-            if (existingScrollIndicator) {
-                // Add the scroll indicator back to the container
-                verticalProgressContainer.appendChild(existingScrollIndicator);
-            } else {
-                // If for some reason it doesn't exist, create it
-                const newScrollIndicator = document.createElement('div');
-                newScrollIndicator.className = 'scroll-indicator';
-                newScrollIndicator.id = 'scroll-indicator';
-                verticalProgressContainer.appendChild(newScrollIndicator);
-            }
 
             // First, shuffle the order of questions
             const shuffledQuestions = shuffleArray(questions);
@@ -656,7 +581,7 @@
             randomizedQuestions.forEach((questionData, index) => {
                 const questionElement = document.createElement('div');
                 questionElement.className = 'question-container';
-                questionElement.id = `question-${index}`; // Add ID for linking to vertical progress indicators
+                questionElement.id = `question-${index}`;
                 questionElement.innerHTML = `
                     <div class="question-text">${index + 1}. ${questionData.question}</div>
                     <div class="options-container" id="options-${index}">
@@ -678,22 +603,6 @@
                         handleAnswer(index, parseInt(option.value));
                     });
                 });
-
-                // Create vertical progress indicator for this question
-                const indicator = document.createElement('div');
-                indicator.className = 'vertical-progress-indicator unanswered';
-                indicator.dataset.questionIndex = index;
-                indicator.title = `Question ${index + 1}`;
-
-                // Add click event to scroll to question
-                indicator.addEventListener('click', () => {
-                    const questionElement = document.getElementById(`question-${index}`);
-                    if (questionElement) {
-                        questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-
-                verticalProgressContainer.appendChild(indicator);
             });
 
             updateProgress();
@@ -730,20 +639,6 @@
                 radio.disabled = true;
             });
 
-            // Update vertical progress indicator
-            const indicator = document.querySelector(`.vertical-progress-indicator[data-question-index="${questionIndex}"]`);
-            if (indicator) {
-                // Remove all classes
-                indicator.classList.remove('answered', 'missed', 'unanswered');
-
-                // Add appropriate class based on answer correctness
-                if (selectedChoice === correctAnswer) {
-                    indicator.classList.add('answered');
-                } else {
-                    indicator.classList.add('missed');
-                }
-            }
-
             // Update score
             updateScore();
             updateProgress();
@@ -766,78 +661,8 @@
             const answeredCount = userAnswers.filter(answer => answer !== null).length;
             const progressPercentage = (answeredCount / questions.length) * 100;
             progressBar.style.width = `${progressPercentage}%`;
-
-            // Update vertical progress indicators
-            document.querySelectorAll('.vertical-progress-indicator').forEach((indicator, index) => {
-                if (userAnswers[index] === null) {
-                    if (!indicator.classList.contains('answered') && !indicator.classList.contains('missed')) {
-                        indicator.classList.add('unanswered');
-                    }
-                }
-            });
         }
 
-        // Function to update the scroll indicator position
-        function updateScrollIndicator() {
-            const currentScrollIndicator = document.querySelector('#vertical-progress-container .scroll-indicator');
-            if (currentScrollIndicator) {
-                // Calculate the offset of the test container from the top
-                const testContainerElement = document.getElementById('test-container');
-                if (!testContainerElement) return;
-
-                const containerRect = testContainerElement.getBoundingClientRect();
-                const containerTop = containerRect.top + window.scrollY;
-                const containerHeight = testContainerElement.scrollHeight;
-
-                // Calculate viewport and document dimensions
-                const viewportHeight = window.innerHeight;
-                const documentHeight = document.body.scrollHeight;
-
-                // Calculate how much of the document is remaining to scroll after the container
-                const contentBelowContainer = documentHeight - (containerTop + containerHeight);
-                const scrollableArea = documentHeight - viewportHeight;
-
-                // Calculate the range where scrolling affects the container position
-                const scrollRange = containerHeight + contentBelowContainer;
-
-                // Determine where in the scroll range we are
-                if (window.scrollY <= containerTop) {
-                    // Before the container
-                    currentScrollIndicator.style.top = `${(containerTop / documentHeight) * 100}%`;
-                } else if (window.scrollY >= containerTop + containerHeight - viewportHeight) {
-                    // After we've scrolled through the container
-                    currentScrollIndicator.style.top = `${((containerTop + containerHeight - viewportHeight) / documentHeight) * 100}%`;
-                } else {
-                    // Somewhere within the container scroll range
-                    const relativeScrollPosition = window.scrollY - containerTop;
-                    const percentageOfContainerScroll = relativeScrollPosition / (containerHeight - viewportHeight);
-                    const maxScrollIndicatorTop = ((containerTop + containerHeight - viewportHeight) / documentHeight) * 100;
-                    const minScrollIndicatorTop = (containerTop / documentHeight) * 100;
-
-                    currentScrollIndicator.style.top = `${minScrollIndicatorTop + (maxScrollIndicatorTop - minScrollIndicatorTop) * percentageOfContainerScroll}%`;
-                }
-
-                // Calculate the height of the scroll indicator based on viewport size
-                currentScrollIndicator.style.height = `${Math.max(VERTICAL_SCROLL_INDICATOR_MIN_HEIGHT, (viewportHeight / documentHeight) * 100)}%`;
-            }
-        }
-
-        // Throttle function to limit how often a function can run
-        function throttle(func, limit) {
-            let inThrottle;
-            return function () {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
-        // Add scroll event listener with throttling to improve performance
-        window.addEventListener('scroll', throttle(updateScrollIndicator, 100));
 
         // Show final results
         function showResults() {
@@ -888,16 +713,7 @@
             // Clear the cache to ensure fresh data is loaded
             clearCache();
             loadAvailableExams();
-            // Initialize scroll indicator position
-            updateScrollIndicator();
-            // Apply the offset to the vertical progress container
-            if (verticalProgressContainer) {
-                verticalProgressContainer.style.paddingTop = `${VERTICAL_PROGRESS_OFFSET}px`;
-            }
         });
-
-        // Update scroll indicator on window resize
-        window.addEventListener('resize', updateScrollIndicator);
     </script>
 </body>
 
