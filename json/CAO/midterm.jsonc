@@ -48,7 +48,7 @@
             "Transfer from memory to register",
             "Transfer from register to floating-point memory"
         ],
-        "correct": 3
+        "correct": 0
     },
     {
         "question": "What element of machine instruction encompasses an input for an operation?",
@@ -78,7 +78,7 @@
             "Transfer from memory to register",
             "Transfer from register to floating-point memory"
         ],
-        "correct": 2
+        "correct": 1
     },
     {
         "question": "Which instruction divides unsigned values?",
