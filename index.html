@@ -351,7 +351,7 @@
                 availableExams = examsData.map(exam => {
                     return {
                         value: `json/${exam.name}`, // Add path prefix for loading
-                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label
+                        label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
                         content: exam.content // Store the content directly from the API response
                     };
                 });
@@ -504,7 +504,7 @@
                 const refreshedAvailableExams = examsData.map(exam => {
                     return {
                         value: `json/${exam.name}`, // Add path prefix for loading
-                        label: exam.name.replace('.json', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label
+                        label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
                         content: exam.content // Store the content directly from the API response
                     };
                 });

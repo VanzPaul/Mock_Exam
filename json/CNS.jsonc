@@ -1,0 +1,463 @@
+// Test comments
+[
+    {
+        "question": "What does the CALL instruction do in the 8086 microprocessor?",
+        "choices": [
+            "Jumps to a new segment without saving return information",
+            "Transfers control to a procedure and saves the return address on the stack",
+            "Clears the instruction queue and halts execution",
+            "Loads a new value into the stack segment register"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is pushed onto the stack during a Near CALL?",
+        "choices": [
+            "Only the Code Segment (CS)",
+            "Both CS and Instruction Pointer (IP)",
+            "Only the Instruction Pointer (IP)",
+            "The entire flag register"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is pushed onto the stack during a Far CALL?",
+        "choices": [
+            "Only IP",
+            "Only CS",
+            "Both CS and IP",
+            "Nothing; Far CALL uses registers only"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the RET instruction do?",
+        "choices": [
+            "Saves the current IP to memory",
+            "Returns control by fetching the saved return address from the stack into IP",
+            "Clears the stack segment",
+            "Calls the main procedure again"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the RETF instruction do?",
+        "choices": [
+            "Returns from a near procedure by popping IP only",
+            "Returns from a far procedure by popping both IP and CS from the stack",
+            "Forces a jump to segment 0",
+            "Restarts the microprocessor"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a procedure in the context of 8086 assembly?",
+        "choices": [
+            "A hardware interrupt handler",
+            "A self-contained block of code or subroutine that can be called from multiple points",
+            "A type of flag register",
+            "A segment of data memory"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the primary role of the Instruction Pointer (IP)?",
+        "choices": [
+            "Hold the base address of the stack",
+            "Store the result of arithmetic operations",
+            "Hold the offset address of the next instruction to be executed",
+            "Point to the data segment"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which segment register contains the segment address of the current program code?",
+        "choices": [
+            "DS",
+            "SS",
+            "ES",
+            "CS"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which segment register points to where data is stored?",
+        "choices": [
+            "CS",
+            "DS",
+            "SS",
+            "ES"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which segment register holds the segment address of the program stack?",
+        "choices": [
+            "CS",
+            "DS",
+            "SS",
+            "ES"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which segment register is used for additional data storage and string operations?",
+        "choices": [
+            "CS",
+            "DS",
+            "SS",
+            "ES"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What does the term 'Controls Operand' refer to?",
+        "choices": [
+            "The flags affected by an instruction",
+            "The segment used for jumps",
+            "The data or memory location on which an instruction operates",
+            "The instruction queue buffer"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is an Instruction Arithmetic Branch?",
+        "choices": [
+            "A jump that always occurs",
+            "A branch that depends on results of arithmetic operations and condition flags",
+            "A loop that decrements CX unconditionally",
+            "A far call to a math library"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the function of a Branch Instruction?",
+        "choices": [
+            "To store data in registers",
+            "To change the normal sequential flow of program execution",
+            "To increment the stack pointer",
+            "To clear the flag register"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "In Direct Branch addressing, how is the target address specified?",
+        "choices": [
+            "It is stored in a register",
+            "It is calculated relative to the current IP",
+            "It is explicitly given in the instruction",
+            "It is read from the stack"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In Indirect Branch addressing, how is the target address determined?",
+        "choices": [
+            "By adding a displacement to IP",
+            "By reading it from a register or memory location",
+            "By hashing the instruction opcode",
+            "It is hardcoded in the BIOS"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What defines a Relative Branch?",
+        "choices": [
+            "The target is in another segment",
+            "The target address is determined by adding a constant displacement to the current instruction address",
+            "It uses only the CS register",
+            "It jumps based on the parity flag"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the JMP (Jump) instruction do?",
+        "choices": [
+            "Saves the current IP and calls a subroutine",
+            "Transfers program control to the memory address in its operand by updating IP",
+            "Only works with near procedures",
+            "Decrements CX and conditionally jumps"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does a Conditional Jump transfer control?",
+        "choices": [
+            "Always, without checking any condition",
+            "Only if a specified condition or flag is satisfied",
+            "Only at the start of a program",
+            "When CX equals zero"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What characterizes an Unconditional Jump?",
+        "choices": [
+            "It checks the zero flag before jumping",
+            "It only works within the same segment",
+            "It always transfers control without checking any condition",
+            "It requires two operands"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is a Short Jump?",
+        "choices": [
+            "A jump to a different segment",
+            "A jump within the same segment using a 1-byte offset",
+            "A jump that only occurs if CF=0",
+            "A jump that decrements CX"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a Near Jump?",
+        "choices": [
+            "A jump to a different segment",
+            "A jump within the same code segment with a larger range than a short jump",
+            "A jump that always sets the overflow flag",
+            "A type of conditional jump"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is a Far Jump?",
+        "choices": [
+            "A jump that uses only IP",
+            "A jump within the same segment using a 1-byte offset",
+            "A jump that transfers control to a different code segment using both segment and offset",
+            "A jump triggered by a hardware interrupt"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "When does the JA (Jump if Above) instruction jump?",
+        "choices": [
+            "If C=1",
+            "If C=0 and Z=0",
+            "If Z=1",
+            "If S=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JAE (Jump if Above or Equal) instruction jump?",
+        "choices": [
+            "If C=1",
+            "If C=0",
+            "If Z=0",
+            "If O=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JB (Jump if Below) instruction jump?",
+        "choices": [
+            "If C=0",
+            "If C=1",
+            "If Z=1",
+            "If P=0"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JBE (Jump if Below or Equal) instruction jump?",
+        "choices": [
+            "If C=0 and Z=0",
+            "If C=1 or Z=1",
+            "If S=0",
+            "If O=0"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JE (Jump if Equal) instruction jump?",
+        "choices": [
+            "If Z=0",
+            "If Z=1",
+            "If C=1",
+            "If P=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JG (Jump if Greater) instruction jump? (signed comparison)",
+        "choices": [
+            "If Z=0 and S=O",
+            "If Z=1",
+            "If C=0",
+            "If S=1"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "When does the JC (Jump if Carry) instruction jump?",
+        "choices": [
+            "If C=0",
+            "If C=1",
+            "If Z=1",
+            "If O=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JNE (Jump if Not Equal) instruction jump?",
+        "choices": [
+            "If Z=1",
+            "If Z=0",
+            "If C=1",
+            "If P=0"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JPE (or JP) instruction jump?",
+        "choices": [
+            "If P=0",
+            "If P=1",
+            "If Z=0",
+            "If S=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JNP instruction jump?",
+        "choices": [
+            "If P=1",
+            "If P=0",
+            "If C=1",
+            "If Z=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When does the JNS (Jump if Not Signed/Positive) instruction jump?",
+        "choices": [
+            "If S=1",
+            "If S=0",
+            "If Z=1",
+            "If O=1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the LOOP instruction do?",
+        "choices": [
+            "Jumps if CX = 0",
+            "Decrements CX by one and jumps to the label if CX is not zero",
+            "Adds 1 to CX and jumps unconditionally",
+            "Jumps only if ZF = 1"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the LOOPE/LOOPZ instruction do?",
+        "choices": [
+            "Decrements CX and jumps if CX ≠ 0 and Z = 1",
+            "Jumps only if CX = 0",
+            "Decrements CX and jumps if Z = 0",
+            "Increments CX and continues"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What does the LOOPNE/LOOPNZ instruction do?",
+        "choices": [
+            "Decrements CX and jumps if CX ≠ 0 and Z = 0",
+            "Jumps if parity is even",
+            "Does not affect CX",
+            "Only works with far jumps"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What does the JCXZ instruction do?",
+        "choices": [
+            "Jumps if CX ≠ 0",
+            "Performs a short jump if CX register is zero",
+            "Calls a subroutine if CX = 0",
+            "Sets the zero flag if CX = 0"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the purpose of flags in the 8086 microprocessor?",
+        "choices": [
+            "To store return addresses",
+            "To hold segment addresses",
+            "To indicate outcomes of operations for conditional decisions",
+            "To manage the instruction queue"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "When is the Carry Flag (CF) set?",
+        "choices": [
+            "When the result is zero",
+            "When there is a carry or borrow out of the most significant bit",
+            "When the number of 1-bits is even",
+            "When there is signed overflow"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "When is the Parity Flag (PF) set?",
+        "choices": [
+            "If the number of 1-bits in the result is odd",
+            "If the result is negative",
+            "If the number of 1-bits in the result is even",
+            "If CX = 0"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the Auxiliary Carry Flag (AF) used for?",
+        "choices": [
+            "General-purpose arithmetic",
+            "Indicating signed overflow",
+            "Carry between lower and upper 4 bits (used in BCD operations)",
+            "Controlling segment jumps"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "When is the Zero Flag (ZF) set?",
+        "choices": [
+            "When the result is positive",
+            "When the result is negative",
+            "When the result of an operation is zero",
+            "When CF = 1"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the Sign Flag (SF) indicate?",
+        "choices": [
+            "Whether the result is zero",
+            "Whether the result has even parity",
+            "The sign of the result; set if MSB = 1 (negative)",
+            "Whether an overflow occurred"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "When is the Overflow Flag (OF) set?",
+        "choices": [
+            "When an unsigned carry occurs",
+            "When the result is zero",
+            "When a signed arithmetic result is too large or too small for the destination",
+            "When parity is odd"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the ADD instruction do?",
+        "choices": [
+            "Subtracts two operands and updates flags",
+            "Performs arithmetic addition and updates status flags based on the result",
+            "Jumps to a label if addition succeeds",
+            "Only works with immediate values"
+        ],
+        "correct": 1
+    }
+]

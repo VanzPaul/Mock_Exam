@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"github.com/marcozac/go-jsonc"
 )
 
 // ExamFile represents a JSON file with its name and content
@@ -59,18 +61,34 @@ func readExamFiles() ([]ExamFile, error) {
 			return err
 		}
 
-		// Check if it's a file and has a .json extension
-		if !info.IsDir() && filepath.Ext(path) == ".json" {
+		// Check if it's a file and has a .json or .jsonc extension
+		ext := filepath.Ext(path)
+		if !info.IsDir() && (ext == ".json" || ext == ".jsonc") {
 			// Read the file content
 			content, err := os.ReadFile(path)
 			if err != nil {
 				return fmt.Errorf("failed to read file %s: %w", path, err)
 			}
 
+			// Skip empty files
+			if len(content) == 0 {
+				fmt.Printf("Warning: Skipping empty file %s\n", path)
+				return nil // This continues with other files in filepath.Walk
+			}
+
 			// Parse JSON content to interface{}
 			var parsedContent interface{}
-			if err := json.Unmarshal(content, &parsedContent); err != nil {
-				return fmt.Errorf("failed to parse JSON in file %s: %w", path, err)
+			if ext == ".jsonc" {
+				// Use jsonc package for JSONC files
+				err = jsonc.Unmarshal(content, &parsedContent)
+				if err != nil {
+					return fmt.Errorf("failed to parse JSONC in file %s: %w", path, err)
+				}
+			} else {
+				// Use standard json package for regular JSON files
+				if err := json.Unmarshal(content, &parsedContent); err != nil {
+					return fmt.Errorf("failed to parse JSON in file %s: %w", path, err)
+				}
 			}
 
 			// Add to exam files slice
