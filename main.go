@@ -17,6 +17,12 @@ type ExamFile struct {
 	Content interface{} `json:"content"`
 }
 
+// Subject represents a subject with its name and associated exams
+type Subject struct {
+	Name  string     `json:"name"`
+	Exams []ExamFile `json:"exams"`
+}
+
 func main() {
 	// Serve static files from the current directory
 	fs := http.FileServer(http.Dir("./"))
@@ -32,28 +38,28 @@ func main() {
 	log.Fatal(http.ListenAndServe(":9090", nil))
 }
 
-// serveExamFiles reads all JSON files from the "json" directory and returns their names and contents
+// serveExamFiles reads all JSON files from the "json" directory organized by subjects and returns subjects with their exams
 func serveExamFiles(w http.ResponseWriter, r *http.Request) {
 	// Set content type to JSON
 	w.Header().Set("Content-Type", "application/json")
 
-	// Read all files from the json directory
-	examFiles, err := readExamFiles()
+	// Read all files from the json directory organized by subjects
+	subjects, err := readExamFiles()
 	if err != nil {
 		http.Error(w, "Failed to read exam files: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	// Encode and send the response
-	if err := json.NewEncoder(w).Encode(examFiles); err != nil {
+	if err := json.NewEncoder(w).Encode(subjects); err != nil {
 		http.Error(w, "Failed to encode response: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
 
-// readExamFiles reads all JSON files from the "json" directory and returns their names and contents
-func readExamFiles() ([]ExamFile, error) {
-	var examFiles []ExamFile
+// readExamFiles reads all JSON files from the "json" directory organized by subjects and returns subjects with their exams
+func readExamFiles() ([]Subject, error) {
+	subjectsMap := make(map[string][]ExamFile)
 
 	// Read files from the json directory
 	err := filepath.Walk("json", func(path string, info os.FileInfo, err error) error {
@@ -64,6 +70,10 @@ func readExamFiles() ([]ExamFile, error) {
 		// Check if it's a file and has a .json or .jsonc extension
 		ext := filepath.Ext(path)
 		if !info.IsDir() && (ext == ".json" || ext == ".jsonc") {
+			// Extract subject name from the directory path
+			dir := filepath.Dir(path)
+			subjectName := filepath.Base(dir)
+
 			// Read the file content
 			content, err := os.ReadFile(path)
 			if err != nil {
@@ -91,12 +101,12 @@ func readExamFiles() ([]ExamFile, error) {
 				}
 			}
 
-			// Add to exam files slice
+			// Add to the appropriate subject's exams
 			examFile := ExamFile{
 				Name:    info.Name(),
 				Content: parsedContent,
 			}
-			examFiles = append(examFiles, examFile)
+			subjectsMap[subjectName] = append(subjectsMap[subjectName], examFile)
 		}
 
 		return nil
@@ -106,5 +116,15 @@ func readExamFiles() ([]ExamFile, error) {
 		return nil, err
 	}
 
-	return examFiles, nil
+	// Convert map to slice of subjects
+	var subjects []Subject
+	for subjectName, exams := range subjectsMap {
+		subject := Subject{
+			Name:  subjectName,
+			Exams: exams,
+		}
+		subjects = append(subjects, subject)
+	}
+
+	return subjects, nil
 }

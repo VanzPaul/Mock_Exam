@@ -247,9 +247,13 @@
             <h1>Multiple Choice Test</h1>
             <p class="description">Select the correct answer for each question. You'll get immediate feedback.</p>
             <div style="margin-top: 15px;">
+                <label for="subject-select">Select Subject: </label>
+                <select id="subject-select">
+                    <option value="">-- Select a Subject --</option>
+                </select>
                 <label for="exam-select">Select Exam: </label>
-                <select id="exam-select">
-                    <option value="examQuestions.json">Robotics Sensors Exam</option>
+                <select id="exam-select" disabled>
+                    <option value="">-- Select an Exam --</option>
                 </select>
                 <button id="load-exam-btn" style="margin-left: 10px;">Load Exam</button>
             </div>
@@ -278,6 +282,7 @@
         const scoreTextElement = document.getElementById('score-text');
         const restartBtn = document.getElementById('restart-btn');
         const progressBar = document.getElementById('progress');
+        const subjectSelect = document.getElementById('subject-select');
         const examSelect = document.getElementById('exam-select');
         const loadExamBtn = document.getElementById('load-exam-btn');
         const verticalProgressContainer = document.getElementById('vertical-progress-container');
@@ -323,8 +328,8 @@
             };
         }
 
-        // Available exam files - will be loaded dynamically from the server or cache
-        let availableExams = [];
+        // Available subjects and exams - will be loaded dynamically from the server or cache
+        let availableSubjects = [];
         let cachedExamData = null;
 
         // Fetch available exam files from the server and cache their content
@@ -334,8 +339,8 @@
 
             if (cachedExamData) {
                 // Use cached data if available and valid
-                availableExams = cachedExamData.availableExams;
-                populateExamDropdown();
+                availableSubjects = cachedExamData.availableSubjects;
+                populateSubjectDropdown();
                 return;
             }
 
@@ -345,14 +350,20 @@
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const examsData = await response.json();
+                const subjectsData = await response.json();
 
                 // Convert the API response to the format expected by the UI
-                availableExams = examsData.map(exam => {
+                availableSubjects = subjectsData.map(subject => {
+                    const exams = subject.exams.map(exam => {
+                        return {
+                            value: `json/${subject.name}/${exam.name}`, // Add path prefix for loading
+                            label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
+                            content: exam.content // Store the content directly from the API response
+                        };
+                    });
                     return {
-                        value: `json/${exam.name}`, // Add path prefix for loading
-                        label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
-                        content: exam.content // Store the content directly from the API response
+                        name: subject.name,
+                        exams: exams
                     };
                 });
 
@@ -362,7 +373,16 @@
                     if (rootExamResponse.ok) {
                         // Fetch the content of examQuestions.json to include in cache
                         const rootExamContent = await rootExamResponse.json();
-                        availableExams.unshift({
+                        // Add it to a default subject if it exists, or create a default subject
+                        let defaultSubject = availableSubjects.find(subject => subject.name === 'General');
+                        if (!defaultSubject) {
+                            defaultSubject = {
+                                name: 'General',
+                                exams: []
+                            };
+                            availableSubjects.unshift(defaultSubject);
+                        }
+                        defaultSubject.exams.unshift({
                             value: 'examQuestions.json',
                             label: 'Robotics Sensors Exam',
                             content: rootExamContent
@@ -374,44 +394,74 @@
 
                 // Now we have all the content, save it to cache
                 const cacheData = {
-                    availableExams: availableExams
+                    availableSubjects: availableSubjects
                 };
                 saveToCache(cacheData);
 
-                populateExamDropdown();
+                populateSubjectDropdown();
             } catch (error) {
                 console.error('Error loading available exams:', error);
 
                 // Try to use cache as fallback if API fails
                 cachedExamData = loadFromCache();
                 if (cachedExamData) {
-                    availableExams = cachedExamData.availableExams;
-                    populateExamDropdown();
+                    availableSubjects = cachedExamData.availableSubjects;
+                    populateSubjectDropdown();
                     return;
                 }
 
                 // If no cache, use a minimal default
-                availableExams = [{ value: 'examQuestions.json', label: 'Robotics Sensors Exam', content: [] }];
-                populateExamDropdown();
+                availableSubjects = [{ name: 'General', exams: [{ value: 'examQuestions.json', label: 'Robotics Sensors Exam', content: [] }] }];
+                populateSubjectDropdown();
             }
         }
 
-        // Populate the exam selection dropdown
-        function populateExamDropdown() {
-            examSelect.innerHTML = '';
-            availableExams.forEach(exam => {
+        // Populate the subject selection dropdown
+        function populateSubjectDropdown() {
+            subjectSelect.innerHTML = '<option value="">-- Select a Subject --</option>';
+            availableSubjects.forEach(subject => {
                 const option = document.createElement('option');
-                option.value = exam.value;
-                option.textContent = exam.label;
-                examSelect.appendChild(option);
+                option.value = subject.name;
+                option.textContent = subject.name;
+                subjectSelect.appendChild(option);
             });
+        }
+
+        // Populate the exam selection dropdown based on selected subject
+        function populateExamDropdownBySubject(subjectName) {
+            examSelect.innerHTML = '<option value="">-- Select an Exam --</option>';
+            examSelect.disabled = false;
+
+            if (!subjectName) {
+                examSelect.disabled = true;
+                return;
+            }
+
+            const subject = availableSubjects.find(s => s.name === subjectName);
+            if (subject && subject.exams) {
+                subject.exams.forEach(exam => {
+                    const option = document.createElement('option');
+                    option.value = exam.value;
+                    option.textContent = exam.label;
+                    examSelect.appendChild(option);
+                });
+            }
         }
 
         // Fetch questions from the server based on selected exam or use cached data
         async function loadQuestions(examFile) {
             try {
                 // First, check if we have the exam in our cached data
-                const cachedExam = availableExams.find(exam => exam.value === examFile);
+                let cachedExam = null;
+                for (const subject of availableSubjects) {
+                    for (const exam of subject.exams) {
+                        if (exam.value === examFile) {
+                            cachedExam = exam;
+                            break;
+                        }
+                    }
+                    if (cachedExam) break;
+                }
 
                 if (cachedExam && cachedExam.content) {
                     // Use cached content if available
@@ -433,7 +483,17 @@
                 console.error('Error loading questions:', error);
 
                 // Try to use cached exam as fallback
-                const cachedExam = availableExams.find(exam => exam.value === examFile);
+                let cachedExam = null;
+                for (const subject of availableSubjects) {
+                    for (const exam of subject.exams) {
+                        if (exam.value === examFile) {
+                            cachedExam = exam;
+                            break;
+                        }
+                    }
+                    if (cachedExam) break;
+                }
+
                 if (cachedExam && cachedExam.content) {
                     console.log('Using cached exam data as fallback');
                     questions = cachedExam.content;
@@ -498,14 +558,20 @@
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const examsData = await response.json();
+                const subjectsData = await response.json();
 
                 // Convert the API response to the format expected by the UI
-                const refreshedAvailableExams = examsData.map(exam => {
+                const refreshedAvailableSubjects = subjectsData.map(subject => {
+                    const exams = subject.exams.map(exam => {
+                        return {
+                            value: `json/${subject.name}/${exam.name}`, // Add path prefix for loading
+                            label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
+                            content: exam.content // Store the content directly from the API response
+                        };
+                    });
                     return {
-                        value: `json/${exam.name}`, // Add path prefix for loading
-                        label: exam.name.replace(/\.jsonc?$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), // Format filename as label (removes both .json and .jsonc from end)
-                        content: exam.content // Store the content directly from the API response
+                        name: subject.name,
+                        exams: exams
                     };
                 });
 
@@ -515,7 +581,16 @@
                     if (rootExamResponse.ok) {
                         // Fetch the content of examQuestions.json to include in cache
                         const rootExamContent = await rootExamResponse.json();
-                        refreshedAvailableExams.unshift({
+                        // Add it to a default subject if it exists, or create a default subject
+                        let defaultSubject = refreshedAvailableSubjects.find(subject => subject.name === 'General');
+                        if (!defaultSubject) {
+                            defaultSubject = {
+                                name: 'General',
+                                exams: []
+                            };
+                            refreshedAvailableSubjects.unshift(defaultSubject);
+                        }
+                        defaultSubject.exams.unshift({
                             value: 'examQuestions.json',
                             label: 'Robotics Sensors Exam',
                             content: rootExamContent
@@ -527,12 +602,12 @@
 
                 // Save the refreshed data to cache
                 const cacheData = {
-                    availableExams: refreshedAvailableExams
+                    availableSubjects: refreshedAvailableSubjects
                 };
                 saveToCache(cacheData);
 
-                // Update the availableExams variable
-                availableExams = refreshedAvailableExams;
+                // Update the availableSubjects variable
+                availableSubjects = refreshedAvailableSubjects;
 
                 console.log('Cache refreshed successfully');
                 return true;
@@ -792,9 +867,19 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Event listener for subject selection
+        subjectSelect.addEventListener('change', function() {
+            const selectedSubject = this.value;
+            populateExamDropdownBySubject(selectedSubject);
+        });
+
         // Event listener for load exam button
         loadExamBtn.addEventListener('click', () => {
             const selectedExam = examSelect.value;
+            if (!selectedExam) {
+                alert('Please select both a subject and an exam first.');
+                return;
+            }
             loadQuestions(selectedExam);
         });
 

@@ -1,0 +1,353 @@
+// CAO prelims exam
+[
+    {
+        "question": "This major phase in a compiler examines whether the constructed parse tree complies with the rules of the language.",
+        "choices": [
+            "Semantic analysis",
+            "Syntactical analysis",
+            "Lexical analysis",
+            "Logical analysis"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "This defines the layout of the bits of an Instruction, in terms of its constituent fields.",
+        "choices": [
+            "Granularity",
+            "Addressing mode",
+            "Segmentation",
+            "Instruction format"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What does CISC stand for?",
+        "choices": [
+            "Complex Integrated Segment Code",
+            "Computer Instruction Set Code",
+            "Computer Integrated Segment Complexity",
+            "Complex Instruction Set Computer"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which is an example of a machine language?",
+        "choices": [
+            "100110101110",
+            "MOV R1, RX",
+            "2982 1019 2126",
+            "Int count = 7"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What particular language provides notations that can be clearly written and read by programmers?",
+        "choices": [
+            "Executable language",
+            "Low-level language",
+            "High-level language",
+            "Computer programming language"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In assembly language, what symbol signals the assembler to ignore comments?",
+        "choices": [
+            "Period",
+            "Hyphen",
+            "Backslash",
+            "Semicolon"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "This major phase in a compiler converts the groups of characters into series of characters known as tokens.",
+        "choices": [
+            "Semantic analysis",
+            "Lexical analysis",
+            "Syntactical analysis",
+            "Scanning process"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What type of computer architecture involves the embedded programming language of a central processing unit?",
+        "choices": [
+            "Microarchitecture",
+            "Domain architecture",
+            "System design",
+            "Instructional set architecture"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What does RISC stand for?",
+        "choices": [
+            "Reduced Instruction Set Computer",
+            "Register Instruction Set Computer",
+            "Relatively Integrated Segment Code",
+            "Reduced Integrated Set Coder"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What specific language requires programmers to manage in details all the computer's distinctive features relative to data storage and operations?",
+        "choices": [
+            "High-level language",
+            "Low-level language",
+            "Logical language",
+            "Executable language"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This expresses a set of detailed instructions or standard form of commands that are compiled to perform a specific task by the CPU.",
+        "choices": [
+            "Computer programming language",
+            "Arithmetic logic unit",
+            "Object code",
+            "Mnemonic language"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Where are object codes stored?",
+        "choices": [
+            "Object loader",
+            "Linker",
+            "Object file",
+            "Register set"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "It represents the name of the operation or function of the assembly language statement.",
+        "choices": [
+            "Label",
+            "Segment",
+            "Mnemonic",
+            "Register"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What type of computer architecture covers data paths, data processing, and data storage?",
+        "choices": [
+            "Microarchitecture",
+            "Control-flow architecture",
+            "System design",
+            "Instructional set architecture"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What may contain the operand for any opcode that can be assigned to a variety of functions.",
+        "choices": [
+            "Process manager",
+            "Register",
+            "General-purpose register",
+            "Direct memory"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "How does a register set provide the fastest data access in a processor?",
+        "choices": [
+            "It serves as a temporary internal storage that serves as source and destination locations for instruction operations.",
+            "It serves as a permanent internal storage for all instruction operations.",
+            "It allocates minimal memory size to all incoming processes.",
+            "It allocates limited time for all incoming and outgoing operations in the processor."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "In control register 0 (CR0), what does DF = 0 represent?",
+        "choices": [
+            "This represents a positive result of an arithmetic operation.",
+            "This represents an enabled external interrupt.",
+            "This represents a left to right string operation direction.",
+            "This represents an even number of 1-bit in the result of an arithmetic operation."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which is NOT a valid statement about assembly language?",
+        "choices": [
+            "It still requires detailed information about the internal computer architecture.",
+            "It does not provide a more sophisticated means of organizing complex information.",
+            "It is a high-level language that contains a set of executable instruction in binary format.",
+            "It utilizes mnemonic codes."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which of the following is NOT a computer architecture category?",
+        "choices": [
+            "Instructional set architecture",
+            "Assembler directives architecture",
+            "System design",
+            "Microarchitecture"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "How can assembly language be translated into machine language?",
+        "choices": [
+            "By using an assembler",
+            "By implementing data registers",
+            "By segmentation",
+            "By implementing a linker"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which is an INVALID statement about register addressing?",
+        "choices": [
+            "This mode involves an addressing field referring to a register containing the operand.",
+            "This addressing mode only needs a small address field.",
+            "This encompasses the combined capabilities of direct memory addressing and stack addressing.",
+            "This does not involve time-consuming memory referencing."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which of the following is the correct way to classify computer programming languages?",
+        "choices": [
+            "Based on the implementation of semantic analysis",
+            "Based on the level of abstraction",
+            "Based on the length of the program codes",
+            "Based on instruction set interpretation"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which statement best describes a floating point?",
+        "choices": [
+            "It contains decimal points that are not considered as fixed point numerals.",
+            "It stores two digits per byte and the value of the decimal digit is within the range of 0 to 99.",
+            "It explicitly contains a 16-bit offset addressing information from the current segment.",
+            "It is a signed binary value contained in a byte using 2's complement representation."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which statement can be considered as a disadvantage in using assembly language programming?",
+        "choices": [
+            "It is impossible to access instructions that are not accessible with high-level language.",
+            "It is impossible to make all library functions compatible with multiple types of computer architecture through a single instruction set.",
+            "The assembly language codes are not platform-specific thus, porting to a different platform is difficult.",
+            "Writing codes in assembly language takes more time."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which statement best describes a packed binary coded decimal?",
+        "choices": [
+            "It is a signed binary value contained in a byte using 2's complement representation.",
+            "It contains decimal points that are not considered as fixed point numerals.",
+            "It explicitly contains a 16-bit offset addressing information from the current segment.",
+            "It stores two digits per byte and the value of the decimal digit is within the range of 0 to 99."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is the main purpose of CR1?",
+        "choices": [
+            "CR1 holds the bits that enable or disable exception conditions.",
+            "CR1 serves as the reserved control register.",
+            "CR1 holds the page fault linear address.",
+            "CR1 enables the processor to translate a linear address into physical address."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Why do complex instruction set computers tend to have smaller number of registers?",
+        "choices": [
+            "This is due to the large space required for the logical instruction set.",
+            "This is due to the fixed length instructions involved in the structure.",
+            "This is due to the immediate addressing mode implemented towards all incoming process.",
+            "This is due to the limited memory space available in a processor."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What operation is performed by the processor after reading instructions from memory?",
+        "choices": [
+            "The processor fetches the necessary data from memory or an I/O module.",
+            "The instructions are decoded to determine required actions.",
+            "The processor performs some arithmetic or logic operation.",
+            "The instructions are tested by the control unit."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which statement best describes the hexadecimal number system?",
+        "choices": [
+            "It is known as the base-2 number system.",
+            "It uses digits 0 to 9 to represent the first 10 numbers in the system.",
+            "It usually involves the binary complement process.",
+            "It uses the position of each number to determine the ultimate numeric value of the hex number."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is the main purpose of a binary complement in assembly language?",
+        "choices": [
+            "It is used for logical manipulation and simplification of multiplication and subtraction operation.",
+            "It is used to create a simpler way to link object codes.",
+            "It is used for the implementation of an efficient register set.",
+            "It is used for logical manipulation and simplification of addition and subtraction operation."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which among the following may be required by an object file before the hardware executes instructions?",
+        "choices": [
+            "An intermediate processing by the operating system",
+            "An explicit abstraction process",
+            "An internal scanning of all tokens by a linker",
+            "A specific reference to the loaded internally"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which is NOT involved in determining the appropriate allocation of bits in an instruction format?",
+        "choices": [
+            "The number of addressing modes",
+            "The number of variables in each process",
+            "The addressing range",
+            "The number of register sets"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "In control register 0 (CR0), what does PF = 1 indicate?",
+        "choices": [
+            "This indicates a positive page fault linear address.",
+            "This indicates an odd number of 1-bit in the result of an arithmetic operation.",
+            "This indicates the allocation of a single reserved control register.",
+            "This indicates a non-zero result of an arithmetic or comparison operation."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What are the two (2) requirements for the ALU operation?",
+        "choices": [
+            "Input data and the detailed instruction set architecture",
+            "Operands and the list of all registers that are currently in use",
+            "Input data and security policies",
+            "Operands and a specific code indicating the operation to be performed"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is the main purpose of CR0?",
+        "choices": [
+            "CR0 holds the bits that enable or disable exception conditions.",
+            "CR0 serves as the reserved control register.",
+            "CR0 holds the page fault linear address.",
+            "CR0 enables the processor to translate a linear address into physical address."
+        ],
+        "correct": 3
+    }
+]
