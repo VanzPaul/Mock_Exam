@@ -1,0 +1,935 @@
+// Mock Final exams
+[
+    {
+        "question": "Which statement is true regarding the storage of strings in memory?",
+        "choices": [
+            "Strings are placed in loosely arranged segments that do not follow any strict memory ordering pattern at all.",
+            "Strings are continuous series of bits, bytes, words, or doublewords stored in sequential memory locations.",
+            "Strings are maintained entirely inside dedicated processor registers to ensure consistently rapid data handling.",
+            "Strings are represented only as isolated character units positioned with deliberate spacing intervals across memory."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which statement is true about the type of information strings can hold?",
+        "choices": [
+            "Strings are restricted to representing numerical values that follow the rules for standard unsigned integer formats.",
+            "Strings are capable only of encoding characters that fall strictly within the boundaries of basic ASCII encoding sets.",
+            "Strings are used to hold any type of information, such as characters and signed numbers.",
+            "Strings are never capable of storing or interpreting any form of numeric representation in software systems."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which statement is true about the effect of using string instructions in programming?",
+        "choices": [
+            "String instructions tend to introduce noticeable execution overhead that can substantially slow overall program flow.",
+            "String instructions provide functionality without contributing any measurable increase or decrease in final program size.",
+            "With the implementation of string instructions, the size of a program can be considerably reduced.",
+            "String instructions typically rely on supplemental storage areas, requiring the allocation of additional temporary buffers."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which operation is facilitated by string instructions according to their general functionality?",
+        "choices": [
+            "Encrypting strings with public keys",
+            "Storing of characters in a string",
+            "Converting strings to float values",
+            "Compressing strings via Huffman code"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which of the following is a standard operation supported by string instructions?",
+        "choices": [
+            "Sorting strings in order",
+            "Moving strings of data",
+            "Parsing JSON strings",
+            "Creating string checksums"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What string-related operation do string instructions commonly support?",
+        "choices": [
+            "Converting lowercase letters",
+            "Comparing of alphanumeric strings",
+            "Tokenizing strings via delimiters",
+            "Reversing characters in a string"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which operation can be efficiently performed using string instructions?",
+        "choices": [
+            "Searching for a particular byte or word",
+            "Hashing strings with SHA-256",
+            "Allocating memory for strings",
+            "Validating strings using regex"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is a fundamental capability provided by string instructions?",
+        "choices": [
+            "Copying of strings",
+            "Formatting strings for locales",
+            "Serializing strings to binary",
+            "Linking strings to databases"
+        ],
+        "correct": 0
+    },
+    // ---
+    {
+        "question": "Which statement is true about the data structures involved in string operations?",
+        "choices": [
+            "They are restricted to handling only simple, single-byte numerical elements, limiting the range of information that can be processed during typical operations.",
+            "They are generally confined to small internal components and expected to remain entirely within CPU registers throughout each computation step.",
+            "They may involve large data structures, such as alphanumeric character strings, that are moved and examined within the memory.",
+            "They must be kept entirely on external storage devices due to assumed size limitations that prevent them from being managed directly in active memory."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "How are the string elements to be operated on identified in x86 assembly?",
+        "choices": [
+            "Using the EAX and EBX registers for storing source and destination addresses.",
+            "Using the ESP and EBP registers for tracking string boundaries in memory.",
+            "Using the ECX and EDX registers as the primary string pointer registers.",
+            "Using the ESI (source index) and EDI (destination index) registers."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What happens to the ESI and EDI registers after each iteration of a string instruction?",
+        "choices": [
+            "They are reset automatically to zero to help prevent overflow from occurring.",
+            "They are automatically incremented or decremented to point to the next element in the string.",
+            "They remain completely unchanged until they are explicitly modified by a different instruction.",
+            "They are swapped automatically to enable processing of strings in both directions."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the specific role of the ESI and EDI registers in string operations?",
+        "choices": [
+            "ESI specifically stores the loop iteration counter for string operations, and EDI is used to store the final output result of the operation in a buffer location.",
+            "ESI consistently points to the destination string element address in memory, and conversely, EDI always points to the source string element's memory address.",
+            "ESI serves as the source index pointing to the source string element, and EDI serves as the destination index pointing to the destination string element.",
+            "Both ESI and EDI are exclusively reserved for complex arithmetic operations and calculations on integer data during string element comparisons."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which x86 string instruction moves the string byte addressed by the ESI register to the location addressed by the EDI register?",
+        "choices": [
+            "CMPSB",
+            "SCASB",
+            "LODSB",
+            "MOVSB"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which x86 string instruction subtracts the destination string byte (pointed to by EDI) from the source string byte (pointed to by ESI) and updates the status flags based on the result?",
+        "choices": [
+            "MOVSB",
+            "CMPSB",
+            "SCASB",
+            "STOSB"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 string instruction subtracts the destination string byte (pointed to by EDI) from the contents of the AL register and updates the control flags accordingly?",
+        "choices": [
+            "LODSB",
+            "STOSB",
+            "SCASB",
+            "CMPSB"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which x86 string instruction loads the source string byte identified by the ESI register into the AL register (low byte of EAX)?",
+        "choices": [
+            "STOSB",
+            "LODSB",
+            "MOVSB",
+            "SCASB"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 string instruction stores the byte in the AL register into the memory location pointed to by the EDI register?",
+        "choices": [
+            "STOSB",
+            "LODSB",
+            "MOVSB",
+            "CMPSB"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which x86 instruction prefix repeats a string instruction while the ECX register is not zero?",
+        "choices": [
+            "REPE",
+            "REPNE",
+            "REP",
+            "REPZ"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which x86 instruction prefix repeats a string instruction while the ECX register is not zero and the Zero Flag (ZF) is set?",
+        "choices": [
+            "REP",
+            "REPNE",
+            "REPNZ",
+            "REPE/REPZ"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which x86 instruction prefix repeats a string instruction while the ECX register is not zero and the Zero Flag (ZF) is cleared?",
+        "choices": [
+            "REP",
+            "REPE",
+            "REPNE/REPNZ",
+            "REPZ"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "How are string instructions used to handle strings longer than a doubleword?",
+        "choices": [
+            "By manually coding each byte operation in a specific assembly language loop.",
+            "By combining string instructions with a REP instruction to create a repeating instruction.",
+            "By using floating-point registers to store and manipulate all string data elements.",
+            "By disabling all operating system interrupts before starting a string operation."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Where is the number of iterations for a repeated string operation specified?",
+        "choices": [
+            "In the EAX register.",
+            "In the EDX register.",
+            "In the ECX register.",
+            "In the EBX register."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In which directions can string manipulation instructions process data?",
+        "choices": [
+            "String data can only be processed from memory locations with lower addresses and must move consecutively toward higher memory addresses.",
+            "String data can only be processed starting from the highest memory address and must strictly proceed toward lower memory addresses.",
+            "String manipulation instructions can begin at higher addresses and work toward lower ones, and vice versa.",
+            "String operations are restricted to processing data only in a continuous circular buffer fashion within a fixed memory segment."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which x86 string instruction copies a byte from the memory location pointed to by ESI to the location pointed to by EDI, leaves all status flags unchanged, and updates SI and DI based on the direction flag (DF)?",
+        "choices": [
+            "CMPSW",
+            "SCASB",
+            "LODSW",
+            "MOVSB"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which x86 string instruction compares a word at the source (ESI) with a word at the destination (EDI), sets the status flags (C, Z, S, O, P, A) based on the result of ESI − EDI, and increments or decrements SI and DI by 2 depending on the direction flag?",
+        "choices": [
+            "MOVSB",
+            "CMPSW",
+            "SCASB",
+            "STOSB"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 string instruction compares the byte in the AL register with the byte at the memory location pointed to by EDI, updates the status flags based on AL − EDI, and adjusts DI by ±1 based on the direction flag?",
+        "choices": [
+            "LODSW",
+            "MOVSB",
+            "SCASB",
+            "REP"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which x86 string instruction loads a word from the memory address in ESI into the AX register, leaves all arithmetic flags unchanged, and updates SI by ±2 depending on the direction flag?",
+        "choices": [
+            "STOSB",
+            "LODSW",
+            "CMPSW",
+            "SCASB"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which x86 string instruction stores the byte in the AL register into the memory location pointed to by EDI, leaves all status flags unchanged, and updates DI by +1 or −1 based on the direction flag?",
+        "choices": [
+            "MOVSB",
+            "LODSB",
+            "STOSB",
+            "REP"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which x86 prefix instruction repeats a following string instruction (such as MOVSB, LODSW, or STOSB) CX times, decrementing CX after each iteration until it reaches zero?",
+        "choices": [
+            "CMPSB",
+            "SCASW",
+            "REP",
+            "LODSB"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "In the following code snippet, what is the purpose of the instruction 'rep movsb'?\n\nmov cx, origin    ; set REP counter\nmov si, offset source  ; SI points to source\nmov di, offset target  ; DI points to target\nrep movsb              ; ???",
+        "choices": [
+            "Compare bytes between source and target until a mismatch is found.",
+            "Store the byte in AL into every location from target onward.",
+            "Copy CX bytes from the source address (SI) to the target address (DI).",
+            "Scan the target string for a carriage return character."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In the following code snippet, what does the instruction 'repe cmpsb' do?\n\nmov si, offset first     ; point SI at source string\nmov di, offset second    ; point DI at destination string\ncld                      ; DF is cleared so SI and DI will auto-increment\nmov cx, 100              ; allocate number of string elements in CX\nrepe cmpsb               ; ???",
+        "choices": [
+            "Copy 100 bytes from 'first' to 'second'.",
+            "Compare up to 100 bytes of the two strings, stopping early if a mismatch is found.",
+            "Search the 'first' string for the contents of the 'second' string.",
+            "Load 100 bytes from 'first' into the AX register."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "In the following code snippet, what is the function of the instruction 'repne scasb'?\n\nmov di, offset string   ; put offset of string into DI\nmov al, 0dh             ; byte to be scanned for into AL\nmov cx, 80              ; CX used as element counter\ncld                     ; DF is cleared so DI will auto-increment\nrepne scasb             ; ???",
+        "choices": [
+            "Copy 80 bytes from AL into the string.",
+            "Store the carriage return (0Dh) at the end of an 80-byte string.",
+            "Scan up to 80 bytes of the string looking for a carriage return (0Dh), stopping when found or when CX reaches zero.",
+            "Compare the string with another string of 80 bytes."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "What are status flags in operating systems?",
+        "choices": [
+            "Bits within general-purpose registers that are allocated for temporary data storage purposes.",
+            "Bits in special registers that may be set by certain operations and used in conditional branch instructions.",
+            "Designated memory addresses that are responsible for tracking the execution state of active user processes.",
+            "Hardware signals generated by devices that reliably indicate the readiness status of I/O operations."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "How do status flags support multiple data types after a single arithmetic operation?",
+        "choices": [
+            "They perform an automatic conversion of resulting data between signed integer, unsigned integer, and floating-point numeric formats.",
+            "They store and maintain separate individual results for each distinct data type within different specialized flag groups in the register.",
+            "They allow a single arithmetic operation to produce results interpretable for unsigned integers, signed integers, and binary coded decimal (BCD).",
+            "They trigger the activation and use of entirely different ALU hardware circuits depending specifically on the data type being processed."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which status flag indicates an out-of-range condition when the result of an arithmetic operation is treated as an unsigned integer?",
+        "choices": [
+            "Overflow Flag (OF)",
+            "Auxiliary Carry Flag (AF)",
+            "Carry Flag (CF)",
+            "Sign Flag (SF)"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "When interpreting the result of an arithmetic operation as a signed integer, which flag is used to detect overflow (i.e., an invalid carry or borrow)?",
+        "choices": [
+            "Carry Flag (CF)",
+            "Overflow Flag (OF)",
+            "Auxiliary Carry Flag (AF)",
+            "Zero Flag (ZF)"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which flag is specifically used to indicate a carry or borrow when the result of an arithmetic operation is treated as Binary Coded Decimal (BCD)?",
+        "choices": [
+            "Carry Flag (CF)",
+            "Overflow Flag (OF)",
+            "Auxiliary Carry Flag (AF)",
+            "Parity Flag (PF)"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "How does a compare operation differ from a subtraction operation in x86 architecture?",
+        "choices": [
+            "Compare uses floating-point units, while subtraction uses integer units.",
+            "Compare sets status flags but does not store the result; subtraction does both.",
+            "Subtraction only works with signed integers, while compare works with all data types.",
+            "Compare modifies the source operand, whereas subtraction modifies the destination."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What is the primary purpose of the EFLAGS register in x86 architecture?",
+        "choices": [
+            "To store and manage the return address for function calls and subroutine execution.",
+            "To hold temporary data values during complex arithmetic and logical operations.",
+            "To contain condition codes and mode bits that indicate processor state and control operations.",
+            "To manage and control the configuration of memory segmentation and paging units."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What is the 64-bit extension of the EFLAGS register called in x86-64 architecture?",
+        "choices": [
+            "XFLAGS",
+            "RFLAGS",
+            "FLAGS64",
+            "EFX64"
+        ],
+        "correct": 1
+    },
+    // ---
+    {
+        "question": "Which flag indicates whether the current task is nested within another task in protected mode?",
+        "choices": [
+            "Virtual Mode Flag",
+            "Virtual Interrupt Flag",
+            "Nested Task Flag",
+            "Overflow Flag"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which flag allows the processor to emulate an 8086 environment by enabling or disabling virtual 8086 mode?",
+        "choices": [
+            "Nested Task Flag",
+            "Virtual Mode Flag",
+            "Virtual Interrupt Pending Flag",
+            "Carry Flag"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which flags are used specifically in a multitasking environment to manage interrupt handling in virtualized settings?",
+        "choices": [
+            "Nested Task Flag and Carry Flag",
+            "Virtual Mode Flag and Sign Flag",
+            "Virtual Interrupt Flag and Virtual Interrupt Pending Flag",
+            "Zero Flag and Auxiliary Carry Flag"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which instruction clears or resets the carry flag to zero (CF = 0)?",
+        "choices": [
+            "CLD",
+            "CLI",
+            "CLC",
+            "CMC"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which instruction clears or resets the direction flag to zero (DF = 0)?",
+        "choices": [
+            "CLC",
+            "CLD",
+            "STD",
+            "STI"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which instruction clears or resets the interrupt flag to zero (IF = 0)?",
+        "choices": [
+            "CLI",
+            "CLC",
+            "STI",
+            "CMC"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which instruction inverts (complements) the current value of the carry flag?",
+        "choices": [
+            "STC",
+            "CLC",
+            "CMC",
+            "CLI"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which instruction sets the carry flag to one (CF = 1)?",
+        "choices": [
+            "CLC",
+            "CMC",
+            "STC",
+            "STD"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which instruction sets the direction flag to one (DF = 1)?",
+        "choices": [
+            "CLD",
+            "STD",
+            "STI",
+            "CLI"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which instruction sets the interrupt flag to one (IF = 1)?",
+        "choices": [
+            "CLI",
+            "STI",
+            "STC",
+            "CLD"
+        ],
+        "correct": 1
+    },
+    // ---
+    {
+        "question": "What is an interrupt in computer organization and architecture?",
+        "choices": [
+            "A type of hardware failure that causes the processor to permanently halt its current execution.",
+            "A signal requesting the processor to suspend current execution and handle a specific event.",
+            "A specific software instruction that forces the CPU to immediately restart its current execution cycle.",
+            "A memory access violation error that triggers an immediate and complete shutdown of the entire system."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the processor execute in response to an interrupt?",
+        "choices": [
+            "The main program from the very beginning of its execution sequence.",
+            "A complete system reset routine that reinitializes all hardware components.",
+            "The corresponding interrupt service routine (ISR), also known as the interrupt handler.",
+            "A background idle loop that continuously runs until there is manual intervention."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What does the processor execute in response to an interrupt?",
+        "choices": [
+            "The main program from the very beginning of its entire execution sequence and memory address space.",
+            "A complete system reset routine that fully reinitializes all of the hardware components and system settings.",
+            "The corresponding interrupt service routine (ISR), also known as the interrupt handler.",
+            "A background idle loop that continuously runs without any interruption until there is manual intervention."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "What type of interrupt is generated when an external I/O device sends a request to the processor?",
+        "choices": [
+            "Software interrupt",
+            "Non-maskable interrupt",
+            "Hardware interrupt",
+            "Exception"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which type of hardware interrupt can be ignored or delayed if the processor is handling a higher-priority task, and is only recognized when the interrupt flag (IF) is set?",
+        "choices": [
+            "Non-maskable interrupt",
+            "Maskable interrupt",
+            "Software interrupt",
+            "Trap"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which type of interrupt cannot be ignored or delayed and is received on the processor's NMI pin?",
+        "choices": [
+            "Maskable interrupt",
+            "Software interrupt",
+            "Non-maskable interrupt",
+            "System call"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What triggers a software interrupt in a processor?",
+        "choices": [
+            "A signal from a peripheral device like a keyboard or disk drive.",
+            "A voltage spike on the INTR pin.",
+            "A condition being met or a system call being executed in software.",
+            "A hardware failure such as power loss."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "What is the primary purpose of interrupt processing in a processor?",
+        "choices": [
+            "To permanently terminate user programs when errors occur.",
+            "To support the operating system by allowing programs to be suspended and resumed while servicing interrupt requests immediately.",
+            "To increase the clock speed of the CPU during high-load operations.",
+            "To disable all external I/O devices during critical system operations."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What does the x86 architecture use to manage interrupt processing?",
+        "choices": [
+            "A global descriptor table (GDT)",
+            "A page table for virtual memory mapping",
+            "An interrupt vector table (IVT)",
+            "A task state segment (TSS)"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "How many entries does the x86 interrupt vector table contain, and what do they represent?",
+        "choices": [
+            "128 entries, each holding a 16-bit address of an ISR, typically located at a fixed memory address in real mode operations and system initialization.",
+            "256 entries, each containing a 32-bit interrupt vector that points to the segment and offset of a specific interrupt service routine (ISR).",
+            "512 entries, each used for software-only interrupts, managed by the operating system kernel for system calls and internal exception handling.",
+            "64 entries, indexed by vector numbers from 0 to 63 for hardware interrupts only, corresponding to specific external devices and system timers."
+        ],
+        "correct": 1
+    },
+    // ---
+    {
+        "question": "What interrupt vector is generated when a DIV or IDIV instruction attempts an integer division by zero?",
+        "choices": [
+            "Vector 2 - Non-maskable interrupt",
+            "Vector 3 - Breakpoint",
+            "Vector 0 - Divide error",
+            "Vector 6 - Invalid opcode"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which interrupt vector corresponds to the assertion of the NMI hardware signal?",
+        "choices": [
+            "Vector 0 - Divide error",
+            "Vector 2 - Non-maskable interrupt",
+            "Vector 14 - Page fault",
+            "Vector 32 - User-defined"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What interrupt vector is triggered when the INT3 instruction is executed?",
+        "choices": [
+            "Vector 3 - Breakpoint",
+            "Vector 6 - Invalid opcode",
+            "Vector 13 - General protection",
+            "Vector 14 - Page fault"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which interrupt vector occurs when the processor attempts to execute a reserved or undefined opcode?",
+        "choices": [
+            "Vector 0 - Divide error",
+            "Vector 3 - Breakpoint",
+            "Vector 6 - Invalid opcode",
+            "Vector 2 - Non-maskable interrupt"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What interrupt vector is raised when a program attempts a prohibited access to memory or a system resource?",
+        "choices": [
+            "Vector 13 - General protection",
+            "Vector 14 - Page fault",
+            "Vector 32 - User-defined",
+            "Vector 0 - Divide error"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which interrupt vector is generated when the memory management unit (MMU) cannot translate a virtual address and requests page resolution?",
+        "choices": [
+            "Vector 6 - Invalid opcode",
+            "Vector 13 - General protection",
+            "Vector 14 - Page fault",
+            "Vector 3 - Breakpoint"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What range of interrupt vectors can be used for hardware interrupts or software interrupts via the INT instruction?",
+        "choices": [
+            "Vector 0 - Divide error",
+            "Vector 2 - Non-maskable interrupt",
+            "Vectors 32-255 - User-defined",
+            "Vector 14 - Page fault"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "How does the processor determine the order of service when multiple interrupts or exceptions are pending?",
+        "choices": [
+            "By the strict numeric order of their vector numbers in the interrupt vector table, from smallest to largest.",
+            "Randomly, to ensure complete and absolute fairness among all the connected devices and interrupt sources.",
+            "Based on a fixed priority scheme organized into five classes, independent of vector number position.",
+            "By the physical location of the requesting hardware on the motherboard, which determines signal propagation and priority."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What determines the priority of interrupts and exceptions in x86 architecture?",
+        "choices": [
+            "The size of the corresponding interrupt service routine.",
+            "The location of the vector number within the interrupt vector table.",
+            "A classification system consisting of five priority classes.",
+            "The order in which interrupts were enabled by the operating system."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Is the position of a vector number in the interrupt vector table an indicator of its priority?",
+        "choices": [
+            "Yes, lower vector numbers always have higher priority, meaning they are serviced before higher-numbered vectors in the table.",
+            "Yes, priority is directly proportional to vector number, so larger vector numbers indicate a higher level of priority.",
+            "No, priority is organized into five classes and is not reflected by vector table location.",
+            "Only for software interrupts; hardware interrupts use a completely different scheme based on external interrupt controllers."
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which priority class includes 'Traps on the previous instruction' (e.g., vector 1)?",
+        "choices": [
+            "Class 2",
+            "Class 3",
+            "Class 1",
+            "Class 5"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which priority class includes 'External interrupts' (vectors 2, 32–255)?",
+        "choices": [
+            "Class 1",
+            "Class 2",
+            "Class 4",
+            "Class 3"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which priority class includes 'Faults from fetching the next instruction' (vectors 3 and 14)?",
+        "choices": [
+            "Class 5",
+            "Class 2",
+            "Class 4",
+            "Class 3"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which priority class includes 'Faults from decoding the next instruction' (vectors 6 and 7)?",
+        "choices": [
+            "Class 4",
+            "Class 3",
+            "Class 5",
+            "Class 1"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which priority class includes 'Faults on executing an instruction' (vectors 0, 4, 5, 8, 10–14, 16, 17)?",
+        "choices": [
+            "Class 2",
+            "Class 5",
+            "Class 3",
+            "Class 1"
+        ],
+        "correct": 1
+    },
+    // ---
+    {
+        "question": "When an interrupt is recognized by the processor, the following events occur:\n- A: The current stack segment register and the current extended stack pointer register are pushed onto the stack if the transfer involves a change of privilege level.\n- B: The current value of the EFLAGS register is pushed onto the stack.\n- C: Both the IF and TF flags are cleared.\n- D: The current code segment (CS) pointer and the current instruction pointer (IP) are pushed onto the stack.\n- E: If the interrupt is accompanied by an error code, the error code is pushed onto the stack.\n- F: The interrupt vector contents are fetched and loaded into the CS and IP registers.\n- G: Execution continues from the interrupt service routine (ISR).\n- H: The ISR executes an IRET instruction to restore all saved values and resume the interrupted program.\n\nWhat is the correct sequence of these events during interrupt handling?",
+        "choices": [
+            "A → B → C → D → E → F → G → H",
+            "B → D → A → C → F → E → G → H",
+            "D → B → C → A → F → E → H → G",
+            "A → D → B → E → C → F → H → G"
+        ],
+        "correct": 0
+    },
+    // ---
+    {
+        "question": "Which instruction is used to interrupt program execution at a specific point in the program?",
+        "choices": [
+            "INTO",
+            "IRET",
+            "INT",
+            "CLI"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which instruction interrupts program execution only if the Overflow Flag (OF) is equal to 1?",
+        "choices": [
+            "INT",
+            "IRET",
+            "STI",
+            "INTO"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which instruction is used to return from an interrupt service routine and resume execution of the main program?",
+        "choices": [
+            "INT",
+            "INTO",
+            "IRET",
+            "STI"
+        ],
+        "correct": 2
+    },
+    // ---
+    {
+        "question": "Which DOS/BIOS interrupt instruction sets the text-mode cursor, using CH for the cursor start line and CL for the bottom cursor line?",
+        "choices": [
+            "INT 10h / AH = 0Ch",
+            "INT 21h / AH = 2",
+            "INT 10h / AH = 01h",
+            "INT 21h / AH = 3Dh"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which interrupt instruction changes the color of a single pixel, with AL specifying the pixel color, CX the column, and DX the row?",
+        "choices": [
+            "INT 10h / AH = 01h",
+            "INT 10h / AH = 0Ch",
+            "INT 21h / AH = 39h",
+            "INT 21h / AH = 2"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which interrupt instruction writes a character to standard output, where the character is passed in the DL register?",
+        "choices": [
+            "INT 21h / AH = 2",
+            "INT 21h / AH = 3Dh",
+            "INT 10h / AH = 0Ch",
+            "INT 10h / AH = 01h"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which DOS interrupt opens an existing file, where DS:DX points to a zero-terminated ASCII filename, and returns a file handle in AX on success?",
+        "choices": [
+            "INT 21h / AH = 39h",
+            "INT 21h / AH = 3Dh",
+            "INT 21h / AH = 2",
+            "INT 10h / AH = 01h"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which DOS interrupt creates a new directory, given a zero-terminated ASCII pathname in DS:DX, and requires all parent directories in the path to already exist?",
+        "choices": [
+            "INT 21h / AH = 39h",
+            "INT 21h / AH = 3Dh",
+            "INT 10h / AH = 0Ch",
+            "INT 21h / AH = 2"
+        ],
+        "correct": 0
+    },
+    // ---
+    {
+        "question": "What is the primary purpose of hardware interrupts in computer systems?",
+        "choices": [
+            "To permanently halt processor execution when a critical device failure occurs, requiring immediate manual intervention.",
+            "To allow the processor to respond promptly to service requests from peripheral devices, often involving data transfer.",
+            "To increase the clock speed of external devices for faster communication, thereby improving overall system performance.",
+            "To disable software interrupts during critical operations, ensuring that no other processes interfere with time-sensitive hardware tasks."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What causes an exception in x86 architecture?",
+        "choices": [
+            "A signal from an external hardware device, such as a keyboard or disk controller.",
+            "A voltage fluctuation detected by the power management unit, which then signals the processor to take preventive measures.",
+            "The execution of a specific instruction that triggers a software-generated interruption.",
+            "A manual reset request issued by the operating system scheduler to reinitialize the system and clear all pending tasks."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What type of exception occurs when the processor encounters an error while attempting to execute an instruction?",
+        "choices": [
+            "Programmed exception",
+            "Hardware interrupt",
+            "Processor-detected exception",
+            "Maskable interrupt"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which type of exception is explicitly generated by instructions such as INTO, INT, INT3, and BOUND?",
+        "choices": [
+            "Processor-detected exception",
+            "Programmed exception",
+            "Non-maskable interrupt",
+            "External exception"
+        ],
+        "correct": 1
+    },
+    // ---
+    {
+        "question": "What is the key difference between interrupts and exceptions in x86 architecture?",
+        "choices": [
+            "Interrupts are serviced by the IVT (Interrupt Vector Table), whereas exceptions are handled without the IVT's involvement.",
+            "Exceptions arise from internal processor conditions, whereas interrupts are typically triggered by external hardware events.",
+            "Interrupts are typically handled in user mode, but exceptions require kernel mode for proper system functioning and security.",
+            "Exceptions are always given higher priority than interrupts to ensure that internal processor errors are handled immediately."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Why might unprivileged code intentionally generate an exception?",
+        "choices": [
+            "To bypass established memory protection and directly access hardware components without authorization from the system.",
+            "To intentionally trigger a system reset for advanced debugging and diagnostic purposes during development.",
+            "To request system services provided by privileged code in the operating system kernel or device drivers.",
+            "To disable all future interrupts until the system undergoes a full reboot, preventing any external events."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Do exceptions use the Interrupt Vector Table (IVT) in x86 architecture?",
+        "choices": [
+            "No, exceptions use a separate Exception Descriptor Table.",
+            "Yes, exceptions utilize the IVT to determine the appropriate response routine.",
+            "Only programmed exceptions use the IVT; processor-detected ones do not.",
+            "Only in 64-bit mode; not in legacy 32-bit mode."
+        ],
+        "correct": 1
+    }
+]

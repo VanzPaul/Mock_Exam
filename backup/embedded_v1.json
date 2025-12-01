@@ -170,7 +170,7 @@
         "correct": 0
     },
     {
-        "question": "Which wireless technology operates in the 2.4–2.485 GHz ISM band, is packet-based, master-slave, and uses Host Controller Interface (HCI)?",
+        "question": "Which wireless technology operates in the 2.4-2.485 GHz ISM band, is packet-based, master-slave, and uses Host Controller Interface (HCI)?",
         "choices": [
             "Bluetooth",
             "Wi-Fi",

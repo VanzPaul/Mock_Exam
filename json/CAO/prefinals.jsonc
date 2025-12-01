@@ -1,0 +1,353 @@
+// CAO prefinals exam
+[
+    {
+        "question": "This instruction returns the address from a far procedure.",
+        "choices": [
+            "RETM",
+            "RETN",
+            "RETC",
+            "RETF"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What is the other term for procedures?",
+        "choices": [
+            "Retntrains",
+            "Microprocessors",
+            "Subroutines",
+            "Mnemonics"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What are being tested before conditional jump instructions are executed?",
+        "choices": [
+            "Status bits",
+            "Semantics",
+            "Register bits",
+            "Branching targets"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "This instruction returns the address from a near procedure.",
+        "choices": [
+            "RETN",
+            "RET",
+            "RETC",
+            "RETR"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "This allows nesting of procedures to an arbitrary depth.",
+        "choices": [
+            "Return instruction",
+            "Semantic procedure",
+            "Register set",
+            "Procedure call"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "In assembly language, what does IP stand for?",
+        "choices": [
+            "Internal Process",
+            "Initialized Parser",
+            "Internal Protocol",
+            "Instruction Pointer"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "This permits the same piece of code to be used multiple times.",
+        "choices": [
+            "Control",
+            "Register",
+            "Operand",
+            "Procedure"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What instruction can usually be found at the last part of a procedure?",
+        "choices": [
+            "STOSB",
+            "CALL",
+            "RET",
+            "CMP"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "It is a block of statements that are repeatedly executed until a specific condition is satisfied.",
+        "choices": [
+            "Branch",
+            "Loop",
+            "Link",
+            "Interrupt"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "It may also refer to the act of switching execution to a different instruction sequence.",
+        "choices": [
+            "Interrupt",
+            "Procedure",
+            "Branch",
+            "Loop"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What part of a computer organization executes procedures?",
+        "choices": [
+            "Analyzer",
+            "Processor",
+            "Scanner",
+            "Any input device"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What instructions can branch from present location to a procedure?",
+        "choices": [
+            "Call instructions",
+            "Return instructions",
+            "String instructions",
+            "Link instructions"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What does SP stand for, relative to a return instruction?",
+        "choices": [
+            "Stack pointer",
+            "Segment Path",
+            "Stack Register",
+            "Signed Procedure"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "These instructions are used to implement control flow in program loops and conditionals.",
+        "choices": [
+            "Return instructions",
+            "Arithmetic instructions",
+            "Branch instructions",
+            "Semantic instructions"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "It is a self-contained computer program that can be incorporated into a larger program.",
+        "choices": [
+            "Procedure",
+            "String",
+            "Operand",
+            "Controls"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which statement is valid regarding the Near JMP instruction?",
+        "choices": [
+            "This targets external all memory location that has exactly a 1-byte long offset.",
+            "This targets memory location within the same code segment.",
+            "This exclusively targets memory location of the preceding instruction.",
+            "This targets memory location that is outside the code segment."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which among the following locations is NOT a valid storage of return addresses?",
+        "choices": [
+            "In a register",
+            "At the start of a called procedure",
+            "At the top of the stack",
+            "In a linker code"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which statement is INVALID regarding the RET instructions?",
+        "choices": [
+            "RET instructions can either be near or far.",
+            "RET instructions are involves the return of control from which a procedure is called.",
+            "RET instructions are usually the last instructions in a procedure.",
+            "RET instructions encompass the process of emptying the instruction queue."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "What instruction can be used to perform a short jump if there is no parity or P=0?",
+        "choices": [
+            "JNP Label",
+            "JMS Label",
+            "JNE Label",
+            "JP Label"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Where can a procedure be invoked?",
+        "choices": [
+            "At the end of a semantic instruction.",
+            "Only at the beginning of segmented program",
+            "At any point of a program",
+            "Only after a JMP instruction"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What instruction can be used to perform a short jump if the first operand is greater than the second operand?",
+        "choices": [
+            "JFG Label",
+            "JG Label",
+            "JBG Label",
+            "JEG Label"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "What will happen if the branch condition is NOT satisfied?",
+        "choices": [
+            "The next instruction will be at the address indicated in the conditional branch instruction.",
+            "The processor will execute the instruction at the bottom of the stack.",
+            "The next instruction will be discarded since the branch condition is not satisfied.",
+            "The processor will execute the instruction that follows the conditional branch."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which among the following status bits are considered for a JC Label instruction to execute?",
+        "choices": [
+            "Sign flag and zero flag",
+            "Carry flag only",
+            "Auxiliary flag and overflow flag",
+            "Parity flag only"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Which statement is INVALID regarding procedures?",
+        "choices": [
+            "Procedures are self-contained programs.",
+            "Procedures heavily dependent on linkers.",
+            "Procedures are also called subroutines.",
+            "Procedures can be called from more than one (1) location."
+        ],
+        "correct": 1
+    },
+    {
+        "question": "Given that CX=CX−1, which algorithm depicts the correct characteristic of a LOOPZ instruction?",
+        "choices": [
+            "If CX<=0 and Z=0, then jump",
+            "If CX<>0, then jump",
+            "If CX<=0 and Z=1, then jump",
+            "If CX<=1, then jump"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which among the following status bits are considered for a JE Label instruction to execute?",
+        "choices": [
+            "Zero flag only",
+            "Auxiliary flag and overflow flag",
+            "Carry flag only",
+            "Carry flag and sign flag"
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What is the initial process that takes place when a CALL instruction is used?",
+        "choices": [
+            "The instruction queue is emptied to accommodate the instructions of the procedure.",
+            "The address of the next instruction chained with the address of the first instruction of the procedure.",
+            "The subsequent instructions of the procedure are stored in the instruction queue for execution.",
+            "The address of the next instruction that exists in the program is stored in the stack."
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which statement is INVALID regarding the CALL instructions?",
+        "choices": [
+            "CALL instructions can either be near or far.",
+            "CALL instructions encompass the process of emptying the instruction queue.",
+            "CALL instructions are irrevocable.",
+            "CALL instructions always pushes the content of the IP onto the stack before a jump."
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Where does the instruction jump if a near CALL memory instruction is executed?",
+        "choices": [
+            "To the offset address in the memory register of the current code segment.",
+            "To the offset address of the register at any memory location.",
+            "To the offset address of the next instruction set.",
+            "To the offset address of the register in the previous procedure."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "What will happen if the branch condition is satisfied?",
+        "choices": [
+            "The next instruction will be at the address indicated in the conditional branch instruction.",
+            "The processor will execute the instruction at the bottom of the stack.",
+            "The next instruction will be discarded since the branch condition is not satisfied.",
+            "The processor will execute the instruction that follows the conditional branch."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Which algorithm accurately defines the JBE Label instruction?",
+        "choices": [
+            "If C=0 and Z=1, then jump",
+            "If C=0 and Z=0, then jump",
+            "If C=1 or Z=1, then jump",
+            "If P=0 or S=F, then jump"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "What happens to the address of the next instruction in a mainline program when a RET instruction is executed?",
+        "choices": [
+            "It is fetched again and is placed inside the instruction pointer.",
+            "It is automatically stored at the bottom of the stack memory location.",
+            "It is fetched again and is placed in a register linked to the last instruction.",
+            "It will be disregarded since a RET instruction is executed."
+        ],
+        "correct": 0
+    },
+    {
+        "question": "Given that CX=CX−1, which algorithm depicts the correct characteristic of a LOOPNE instruction?",
+        "choices": [
+            "If CX<=0 and Z=1, then jump",
+            "If CX<=0 and Z=0, then jump",
+            "If CX<>0 and Z=1, then jump",
+            "If CX<>0 and Z=0, then jump"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "When does a JB Label instruction perform the short jump operations?",
+        "choices": [
+            "If the carry flag and zero flag are both set to zero",
+            "If the carry flag and the sign flag are both set to zero",
+            "If the overflow flag is set to zero",
+            "If the carry flag is set to one"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Where does the instruction jump if a far CALL memory instruction is executed?",
+        "choices": [
+            "To the offset address in the memory register of the current code segment.",
+            "To the offset address of the register at any memory location.",
+            "To the offset address of the next instruction set.",
+            "To the offset address of the register in the previous procedure."
+        ],
+        "correct": 1
+    }
+]
