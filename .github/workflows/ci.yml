@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.21.x, 1.22.x]
+        go-version: [1.23.x, 1.24.x, 1.25.x]
 
     steps:
     - name: Checkout code
@@ -49,7 +49,7 @@ jobs:
     - name: Security scan with govulncheck
       uses: golang/govulncheck-action@v1
       with:
-        go-version-input: 1.22
+        go-version-input: '1.25'
         cache: true
 
   lint:
@@ -61,7 +61,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: 1.22
+        go-version: '1.25'
         cache: true
 
     - name: Install golangci-lint
