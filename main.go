@@ -28,14 +28,20 @@ func main() {
 	fs := http.FileServer(http.Dir("./"))
 	http.Handle("/", fs)
 
+	// Get port from environment variable, default to 8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	// Add API endpoint to serve JSON files from the json directory
 	http.HandleFunc("/api/exams", serveExamFiles)
 
-	fmt.Println("Server starting on port 9090...")
-	log.Println("Application started on port 9090")
+	fmt.Printf("Server starting on port %s...\n", port)
+	log.Printf("Application started on port %s", port)
 
-	// Start the server on port 9090
-	log.Fatal(http.ListenAndServe(":9090", nil))
+	// Start the server on the specified port
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 // serveExamFiles reads all JSON files from the "json" directory organized by subjects and returns subjects with their exams

@@ -284,10 +284,17 @@
 
             // If no valid cache, fetch from server
             try {
-                const response = await fetch('/api/exams');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // Try the absolute path first, then fallback to relative path if behind a proxy
+                let response;
+                try {
+                    response = await fetch('/api/exams');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                } catch (error) {
+                    // If absolute path fails, try relative path (for proxy scenarios)
+                    response = await fetch('./api/exams');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
                 const subjectsData = await response.json();
 
                 // Convert the API response to the format expected by the UI
@@ -492,10 +499,17 @@
         // Function to refresh the cache by fetching fresh data from the server
         async function refreshCache() {
             try {
-                const response = await fetch('/api/exams');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // Try the absolute path first, then fallback to relative path if behind a proxy
+                let response;
+                try {
+                    response = await fetch('/api/exams');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                } catch (error) {
+                    // If absolute path fails, try relative path (for proxy scenarios)
+                    response = await fetch('./api/exams');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
                 const subjectsData = await response.json();
 
                 // Convert the API response to the format expected by the UI
