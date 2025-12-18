@@ -14,8 +14,8 @@ import (
 
 // ExamFile represents a JSON file with its name and content
 type ExamFile struct {
-	Name    string      `json:"name"`
-	Content interface{} `json:"content"`
+	Name    string `json:"name"`
+	Content any    `json:"content"`
 }
 
 // Subject represents a subject with its name and associated exams
