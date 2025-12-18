@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/NYTimes/gziphandler"
-	"github.com/marcozac/go-jsonc"
+	jsonc "github.com/marcozac/go-jsonc"
 )
 
 // ExamFile represents a JSON file with its name and content
