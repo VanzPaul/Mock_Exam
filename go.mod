@@ -3,6 +3,7 @@ module github.com/VanzPaul/Mock_Exam
 go 1.25.3
 
 require (
+	github.com/NYTimes/gziphandler v1.1.1 // indirect
 	github.com/a-h/templ v0.3.960 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
