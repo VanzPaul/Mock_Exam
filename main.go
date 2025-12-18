@@ -1,12 +1,15 @@
 package main
 
 import (
+	"compress/gzip"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/marcozac/go-jsonc"
 )
@@ -34,8 +37,8 @@ func main() {
 		port = "8080"
 	}
 
-	// Add API endpoint to serve JSON files from the json directory
-	http.HandleFunc("/api/exams", serveExamFiles)
+	// Add API endpoint to serve JSON files from the json directory with gzip compression
+	http.HandleFunc("/api/exams", gzipMiddleware(serveExamFiles))
 
 	fmt.Printf("Server starting on port %s...\n", port)
 	log.Printf("Application started on port %s", port)
@@ -133,4 +136,43 @@ func readExamFiles() ([]Subject, error) {
 	}
 
 	return subjects, nil
+}
+
+// gzipMiddleware wraps an HTTP handler to add gzip compression support
+func gzipMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Check if the client accepts gzip encoding
+		if strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+			// Client supports gzip, so we'll compress the response
+			w.Header().Set("Content-Encoding", "gzip")
+
+			// Create a gzip writer
+			gz := gzip.NewWriter(w)
+			defer gz.Close()
+
+			// Wrap the response writer to use gzip
+			gzw := &gzipResponseWriter{Writer: gz, ResponseWriter: w}
+			next(gzw, r)
+		} else {
+			// Client doesn't support gzip, serve normally
+			next(w, r)
+		}
+	}
+}
+
+// gzipResponseWriter wraps the HTTP response writer to support gzip compression
+type gzipResponseWriter struct {
+	io.Writer
+	http.ResponseWriter
+}
+
+// WriteHeader sends a protocol-specific header prior to sending the body
+func (w *gzipResponseWriter) WriteHeader(statusCode int) {
+	w.Header().Del("Content-Length") // Remove Content-Length header as it's invalid for gzipped content
+	w.ResponseWriter.WriteHeader(statusCode)
+}
+
+// Write writes the data to the connection as part of an HTTP reply
+func (w *gzipResponseWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
 }
